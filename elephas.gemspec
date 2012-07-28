@@ -1,6 +1,6 @@
 # encoding: utf-8
 #
-# This file is part of the elephas gem. Copyright (C) 2011 and above Shogun <shogun_panda@me.com>.
+# This file is part of the elephas gem. Copyright (C) 2012 and above Shogun <shogun_panda@me.com>.
 # Licensed under the MIT license, which can be found at http://www.opensource.org/licenses/mit-license.php.
 #
 
@@ -21,6 +21,8 @@ Gem::Specification.new do |gem|
   gem.executables = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
+
+  gem.add_dependency("cowtech-extensions", "~> 2.7.0")
 
   gem.add_development_dependency("rspec", "~> 2.11.0")
   gem.add_development_dependency("rake", "~> 0.9.0")

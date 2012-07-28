@@ -4,13 +4,8 @@
 # Licensed under the MIT license, which can be found at http://www.opensource.org/licenses/mit-license.php.
 #
 
-require "rubygems"
-require "coverage_helper"
-require "bundler/setup"
-require "elephas"
+require "spec_helper"
 
-RSpec.configure do |config|
-  config.expect_with :rspec do |c|
-    c.syntax = :expect
-  end
+describe Elephas::Entry do
+
 end
