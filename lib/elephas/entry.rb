@@ -65,8 +65,8 @@ module Elephas
 
     # Ensure that the value is an Entry.
     #
-    # @param value [Object] The key associated to this object.
     # @param value [Object] The object to check.
+    # @param key [Object] The key associated to this object.
     # @return [Entry] The wrapped object.
     def self.ensure(value, key, options = {})
       rv = value

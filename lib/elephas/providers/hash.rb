@@ -14,7 +14,7 @@ module Elephas
       attr_accessor :data
 
       # Initialize the provider
-      # @param The initial data stored.
+      # @param data [Hash] The initial data stored.
       def initialize(data = nil)
         data = {} if !data || !data.is_a?(::Hash)
         @data = data

@@ -262,6 +262,29 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#ensure-class_method" title="ensure (class method)">+ (Entry) <strong>ensure</strong>(value, key, options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Ensure that the value is an Entry.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#hashify_key-class_method" title="hashify_key (class method)">+ (String) <strong>hashify_key</strong>(key) </a>
     
 
@@ -277,29 +300,6 @@
 
   
     <span class="summary_desc"><div class='inline'><p>Returns a unique hash for the key.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#ensure-class_method" title="ensure (class method)">+ (Entry) <strong>ensure</strong>(value) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>Wraps the value in a cache entry if needed.</p>
 </div></span>
   
 </li>
@@ -732,7 +732,120 @@
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="hashify_key-class_method">
+  <h3 class="signature first" id="ensure-class_method">
+  
+    + (<tt><span class='object_link'><a href="" title="Elephas::Entry (class)">Entry</a></span></tt>) <strong>ensure</strong>(value, key, options = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Ensure that the value is an Entry.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>value</span>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The object to check.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>key</span>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The key associated to this object.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Elephas::Entry (class)">Entry</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The wrapped object.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/elephas/entry.rb', line 71</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='kw'>ensure</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_rv'>rv</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span>
+
+  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_rv'>rv</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Entry</span><span class='rparen'>)</span> <span class='kw'>then</span>
+    <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span> <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Hash</span><span class='rparen'>)</span>
+
+    <span class='id identifier rubyid_ttl'>ttl</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:ttl</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_integer'>to_integer</span><span class='comma'>,</span> <span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_max'>max</span>
+    <span class='id identifier rubyid_hash'>hash</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:hash</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='op'>::</span><span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Entry</span><span class='period'>.</span><span class='id identifier rubyid_hashify_key'>hashify_key</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_ensure_string'>ensure_string</span><span class='rparen'>)</span>
+
+    <span class='id identifier rubyid_rv'>rv</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Entry</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_rv'>rv</span><span class='comma'>,</span> <span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='id identifier rubyid_ttl'>ttl</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_rv'>rv</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="hashify_key-class_method">
   
     + (<tt>String</tt>) <strong>hashify_key</strong>(key) 
   
@@ -802,82 +915,6 @@
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_hashify_key'>hashify_key</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
   <span class='const'>Digest</span><span class='op'>::</span><span class='const'>SHA2</span><span class='period'>.</span><span class='id identifier rubyid_hexdigest'>hexdigest</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_ensure_string'>ensure_string</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="ensure-class_method">
-  
-    + (<tt><span class='object_link'><a href="" title="Elephas::Entry (class)">Entry</a></span></tt>) <strong>ensure</strong>(value)
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p>Wraps the value in a cache entry if needed.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>value</span>
-      
-      
-        <span class='type'>(<tt>Object</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>The object to wrap.</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="" title="Elephas::Entry (class)">Entry</a></span></tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>The wrapped object.</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-70
-71
-72</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/elephas/entry.rb', line 70</span>
-
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_ensure'>ensure</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='comment'># TODO: Write me
-</span><span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1026,7 +1063,7 @@
       <pre class="code"><span class="info file"># File 'lib/elephas/entry.rb', line 53</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_valid?'>valid?</span><span class='lparen'>(</span><span class='id identifier rubyid_provider'>provider</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_provider'>provider</span> <span class='op'>||=</span> <span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Cache</span><span class='period'>.</span><span class='id identifier rubyid_provider'>provider</span>
+  <span class='id identifier rubyid_provider'>provider</span> <span class='op'>||=</span> <span class='op'>::</span><span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Cache</span><span class='period'>.</span><span class='id identifier rubyid_provider'>provider</span>
   <span class='id identifier rubyid_provider'>provider</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>-</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_updated_at'>updated_at</span> <span class='op'>&lt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_ttl'>ttl</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1039,7 +1076,7 @@
 </div>
 
     <div id="footer">
-  Generated on Sat Jul 28 10:36:46 2012 by
+  Generated on Sat Jul 28 14:29:52 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.2.1 (ruby-1.9.2).
 </div>

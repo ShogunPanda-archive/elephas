@@ -387,12 +387,12 @@
       <pre class="lines">
 
 
-72
-73
-74</pre>
+76
+77
+78</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/elephas/cache.rb', line 72</span>
+      <pre class="code"><span class="info file"># File 'lib/elephas/cache.rb', line 76</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_provider'>provider</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
@@ -463,12 +463,12 @@
       <pre class="lines">
 
 
-80
-81
-82</pre>
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/elephas/cache.rb', line 80</span>
+      <pre class="code"><span class="info file"># File 'lib/elephas/cache.rb', line 84</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_provider'>provider</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
@@ -539,12 +539,12 @@
       <pre class="lines">
 
 
-51
-52
-53</pre>
+55
+56
+57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/elephas/cache.rb', line 51</span>
+      <pre class="code"><span class="info file"># File 'lib/elephas/cache.rb', line 55</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_provider'>provider</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
@@ -642,7 +642,11 @@ It tries reading a key from the cache. If it doesn&#39;t find it, it uses the pr
 42
 43
 44
-45</pre>
+45
+46
+47
+48
+49</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/elephas/cache.rb', line 19</span>
@@ -651,7 +655,7 @@ It tries reading a key from the cache. If it doesn&#39;t find it, it uses the pr
   <span class='id identifier rubyid_rv'>rv</span> <span class='op'>=</span> <span class='kw'>nil</span>
 
   <span class='comment'># Get options
-</span>  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span> <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Hash</span><span class='rparen'>)</span>
+</span>  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span> <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'>Hash</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='symbol'>:ttl</span> <span class='op'>=&gt;</span> <span class='int'>1</span><span class='period'>.</span><span class='id identifier rubyid_hour'>hour</span><span class='comma'>,</span> <span class='symbol'>:force</span> <span class='op'>=&gt;</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='symbol'>:as_entry</span> <span class='op'>=&gt;</span> <span class='kw'>false</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:ttl</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='lbracket'>[</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:ttl</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_integer'>to_integer</span><span class='comma'>,</span> <span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_max'>max</span>
   <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:force</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:force</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_boolean'>to_boolean</span>
@@ -667,9 +671,13 @@ It tries reading a key from the cache. If it doesn&#39;t find it, it uses the pr
 </span>  <span class='id identifier rubyid_rv'>rv</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_provider'>provider</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:hash</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:force</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='kw'>false</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:ttl</span><span class='rbracket'>]</span> <span class='op'>&gt;</span> <span class='int'>0</span>
 
   <span class='kw'>if</span> <span class='id identifier rubyid_rv'>rv</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_block_given?'>block_given?</span> <span class='kw'>then</span> <span class='comment'># Try to compute the value from the block
-</span>    <span class='id identifier rubyid_rv'>rv</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Entry</span><span class='period'>.</span><span class='id identifier rubyid_ensure'>ensure</span><span class='lparen'>(</span><span class='kw'>yield</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='comment'># Compute the value
-</span>    <span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Cache</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_fkey'>fkey</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:ttl</span><span class='rbracket'>]</span> <span class='op'>&gt;</span> <span class='int'>0</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_rv'>rv</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='comment'># Write the data to the cache, if a value was returned
-</span>  <span class='kw'>end</span>
+</span>    <span class='id identifier rubyid_rv'>rv</span> <span class='op'>=</span> <span class='kw'>yield</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+
+    <span class='kw'>if</span> <span class='id identifier rubyid_rv'>rv</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:ttl</span><span class='rbracket'>]</span> <span class='op'>&gt;</span> <span class='int'>0</span> <span class='kw'>then</span> <span class='comment'># We have a value and we have to store it
+</span>      <span class='id identifier rubyid_rv'>rv</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Entry</span><span class='period'>.</span><span class='id identifier rubyid_ensure'>ensure</span><span class='lparen'>(</span><span class='id identifier rubyid_rv'>rv</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span> <span class='comment'># Make sure is an entry
+</span>      <span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Cache</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_fkey'>fkey</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
 
   <span class='comment'># Return value
 </span>  <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:as_entry</span><span class='rbracket'>]</span> <span class='op'>?</span> <span class='id identifier rubyid_rv'>rv</span> <span class='op'>:</span> <span class='id identifier rubyid_rv'>rv</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
@@ -774,14 +782,14 @@ It tries reading a key from the cache. If it doesn&#39;t find it, it uses the pr
       <pre class="lines">
 
 
-62
-63
-64
-65
-66</pre>
+66
+67
+68
+69
+70</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/elephas/cache.rb', line 62</span>
+      <pre class="code"><span class="info file"># File 'lib/elephas/cache.rb', line 66</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='comment'># TODO: Handle options
@@ -798,7 +806,7 @@ It tries reading a key from the cache. If it doesn&#39;t find it, it uses the pr
 </div>
 
     <div id="footer">
-  Generated on Sat Jul 28 10:36:46 2012 by
+  Generated on Sat Jul 28 14:29:52 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.2.1 (ruby-1.9.2).
 </div>
