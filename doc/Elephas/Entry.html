@@ -101,7 +101,7 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>This represents a cache entry.</p>
+    <p>Represents a cache entry.</p>
 
 
   </div>
@@ -317,6 +317,29 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#%3D%3D-instance_method" title="#== (instance method)">- (Boolean) <strong>==</strong>(other) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Compare to another Entry.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#initialize-instance_method" title="#initialize (instance method)">- (Entry) <strong>initialize</strong>(key, value, hash = nil, ttl = 3600) </a>
     
 
@@ -342,7 +365,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#refresh-instance_method" title="#refresh (instance method)">- (Object) <strong>refresh</strong>(save = false) </a>
+      <a href="#refresh-instance_method" title="#refresh (instance method)">- (Float) <strong>refresh</strong>(save = false) </a>
     
 
     
@@ -807,23 +830,23 @@
       <pre class="lines">
 
 
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
 81
 82
 83
-84</pre>
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/elephas/entry.rb', line 71</span>
+      <pre class="code"><span class="info file"># File 'lib/elephas/entry.rb', line 81</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='kw'>ensure</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_rv'>rv</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span>
@@ -905,12 +928,12 @@
       <pre class="lines">
 
 
-62
-63
-64</pre>
+72
+73
+74</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/elephas/entry.rb', line 62</span>
+      <pre class="code"><span class="info file"># File 'lib/elephas/entry.rb', line 72</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_hashify_key'>hashify_key</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
   <span class='const'>Digest</span><span class='op'>::</span><span class='const'>SHA2</span><span class='period'>.</span><span class='id identifier rubyid_hexdigest'>hexdigest</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_ensure_string'>ensure_string</span><span class='rparen'>)</span>
@@ -927,9 +950,85 @@
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="refresh-instance_method">
+  <h3 class="signature first" id="==-instance_method">
   
-    - (<tt>Object</tt>) <strong>refresh</strong>(save = false) 
+    - (<tt>Boolean</tt>) <strong>==</strong>(other) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Compare to another Entry.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>other</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Elephas::Entry (class)">Entry</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The entry to compare with</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p><code>true</code> if the entries are the same, <code>false</code> otherwise.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+64
+65
+66</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/elephas/entry.rb', line 64</span>
+
+<span class='kw'>def</span> <span class='op'>==</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Entry</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='lbracket'>[</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='lbracket'>[</span><span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="refresh-instance_method">
+  
+    - (<tt>Float</tt>) <strong>refresh</strong>(save = false) 
   
 
   
@@ -965,6 +1064,23 @@
   
 </ul>
 
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new updated_at value.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -972,20 +1088,22 @@
       <pre class="lines">
 
 
-43
 44
 45
 46
-47</pre>
+47
+48
+49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/elephas/entry.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'lib/elephas/entry.rb', line 44</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_refresh'>refresh</span><span class='lparen'>(</span><span class='id identifier rubyid_save'>save</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_updated_at'>updated_at</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span>
 
-  <span class='comment'># TODO: Set this value in the cache
-</span><span class='kw'>end</span></pre>
+  <span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Cache</span><span class='period'>.</span><span class='id identifier rubyid_provider'>provider</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='kw'>self</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_save'>save</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_updated_at'>updated_at</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1054,17 +1172,17 @@
       <pre class="lines">
 
 
-53
-54
 55
-56</pre>
+56
+57
+58</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/elephas/entry.rb', line 53</span>
+      <pre class="code"><span class="info file"># File 'lib/elephas/entry.rb', line 55</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_valid?'>valid?</span><span class='lparen'>(</span><span class='id identifier rubyid_provider'>provider</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_provider'>provider</span> <span class='op'>||=</span> <span class='op'>::</span><span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Cache</span><span class='period'>.</span><span class='id identifier rubyid_provider'>provider</span>
-  <span class='id identifier rubyid_provider'>provider</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>-</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_updated_at'>updated_at</span> <span class='op'>&lt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_ttl'>ttl</span>
+  <span class='id identifier rubyid_provider'>provider</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>-</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_updated_at'>updated_at</span> <span class='op'>&lt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_ttl'>ttl</span> <span class='op'>/</span> <span class='int'>1000</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1076,7 +1194,7 @@
 </div>
 
     <div id="footer">
-  Generated on Sat Jul 28 14:29:52 2012 by
+  Generated on Sun Jul 29 10:12:23 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.2.1 (ruby-1.9.2).
 </div>

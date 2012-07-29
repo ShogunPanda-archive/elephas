@@ -12,36 +12,43 @@ module Elephas
       attr_accessor :provider
 
       # This is the main method of the framework.
-      # It tries reading a key from the cache. If it doesn't find it, it uses the provided block to compute its value and then store it into the cache for later usages.
+      #
+      # It tries reading a key from the cache.
+      #
+      # If it doesn't find it, it uses the provided block (which receives options as argument) to compute its value and then store it into the cache for later usages.
+      #
+      # ```ruby
+      # value = Elephas::Cache.use("KEY") do |options|
+      #   "VALUE"
+      # end
+      #
+      # value
+      # # => "VALUE"
+      #
+      # value = Elephas::Cache.use("KEY") do |options|
+      #   "ANOTHER VALUE"
+      # end
+      #
+      # value
+      # # => "VALUE"
+      # ```
       #
       # @param key [String] The key to lookup.
       # @return [Object|Entry] The found or newly-set value associated to the key.
+      # @see
       def use(key, options = {})
         rv = nil
 
         # Get options
-        options = {} if !options.is_a?(::Hash)
-        options = {:ttl => 1.hour, :force => false, :as_entry => false}.merge(options)
-        options[:ttl] == [options[:ttl].to_integer, 0].max
-        options[:force] = options[:force].to_boolean
-        options[:prefix] = options[:prefix].present? ? options[:prefix] : "elephas-#{::Elephas::Version::STRING}-cache"
-
-        # Wrap the final key to ensure we don't have colliding namespaces.
-        fkey = "#{options[:prefix]}[#{key}]"
-
-        # Compute the hash key used for referencing this value
-        options[:hash] = options[:hash] || ::Elephas::Entry.hashify_key(fkey.ensure_string)
+        options = self.setup_options(options, key)
 
         # Check if the storage has the value (if we don't have to skip the cache)
         rv = self.provider.read(options[:hash]) if options[:force] == false && options[:ttl] > 0
 
         if rv.nil? && block_given? then # Try to compute the value from the block
-          rv = yield(key, options)
-
-          if rv && options[:ttl] > 0 then # We have a value and we have to store it
-            rv = ::Elephas::Entry.ensure(rv, key, options) # Make sure is an entry
-            Elephas::Cache.write(fkey, value, options)
-          end
+          rv = yield(options)
+          rv = ::Elephas::Entry.ensure(rv, options[:complete_key], options) # Make sure is an entry
+          Elephas::Cache.write(rv.hash, rv, options) if !rv.value.nil? && options[:ttl] > 0 # We have a value and we have to store it
         end
 
         # Return value
@@ -61,18 +68,16 @@ module Elephas
       # @param key [String] The key to associate the value with.
       # @param value [Object] The value to write. Setting a value to `nil` **doesn't** mean *deleting* the value.
       # @param options [Hash] A list of options for writing.
-      # TODO: Insert options documentation.
+      # @see .setup_options
       # @return [Object] The value itself.
       def write(key, value, options = {})
-        # TODO: Handle options
-
-        self.provider.write(key, value, options)
+        self.provider.write(key, value, self.setup_options(options, key))
       end
 
       # Deletes a value from the cache.
       #
       # @param key [String] The key to delete.
-      # @return [TrueClass|FalseClass] `true` if the key was in the cache, `false` otherwise.
+      # @return [Boolean] `true` if the key was in the cache, `false` otherwise.
       def delete(key)
         self.provider.delete(key)
       end
@@ -80,9 +85,38 @@ module Elephas
       # Checks if a key exists in the cache.
       #
       # @param key [String] The key to lookup.
-      # @return [TrueClass|FalseClass] `true` if the key is in the cache, `false` otherwise.
+      # @return [Boolean] `true` if the key is in the cache, `false` otherwise.
       def exists?(key)
         self.provider.exists?(key)
+      end
+
+      # Returns the default prefix for cache entries.
+      #
+      # @return [String] The default prefix for cache entries.
+      def default_prefix
+        "elephas-#{::Elephas::Version::STRING}-cache"
+      end
+
+      # Setups options for use into the framework.
+      #
+      # @param options [Object] An initial setup.
+      # TODO: Insert options documentation.
+      # @param key [String] The key to associate to this options.
+      # @return [Hash] An options hash.
+      def setup_options(options, key)
+        options = {} if !options.is_a?(::Hash)
+        options = {:key => key.ensure_string, :ttl => 1.hour * 1000, :force => false, :as_entry => false}.merge(options)
+        options[:ttl] == options[:ttl].blank? ? 1.hour * 1000 : [options[:ttl].to_integer, 0].max
+        options[:force] = options[:force].to_boolean
+        options[:prefix] = options[:prefix].present? ? options[:prefix] : "elephas-#{::Elephas::Version::STRING}-cache"
+
+        # Wrap the final key to ensure we don't have colliding namespaces.
+        options[:complete_key] ||= "#{options[:prefix]}[#{options[:key]}]"
+
+        # Compute the hash key used for referencing this value
+        options[:hash] ||= ::Elephas::Entry.hashify_key(options[:complete_key])
+
+        options
       end
     end
   end

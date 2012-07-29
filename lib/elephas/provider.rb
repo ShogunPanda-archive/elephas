@@ -17,17 +17,18 @@ module Elephas
       # @param key [String] The key to lookup.
       # @return [Entry|NilClass] The read value or `nil`.
       def read(key)
-        raise ArgumentError.new("A Elephas::Providers subclass should override this module.")
+        raise ArgumentError.new("A Elephas::Providers subclass must override this method.")
       end
 
       # Writes a value to the cache.
       #
       # @param key [String] The key to associate the value with.
-      # @param value [Object] The value to write. **Setting a value to `nil` doesn't mean *deleting* the value.
-      # @param options [Hash] A list of options for writing. @see Elephas::Cache.write
+      # @param value [Object] The value to write. Setting a value to `nil` **doesn't** mean *deleting* the value.
+      # @param options [Hash] A list of options for writing.
+      # @see Elephas::Cache.setup_options
       # @return [Object] The value itself.
       def write(key, value, options = {})
-        raise ArgumentError.new("A Elephas::Providers subclass should override this module.")
+        raise ArgumentError.new("A Elephas::Providers subclass must override this method.")
       end
 
       # Deletes a value from the cache.
@@ -35,7 +36,7 @@ module Elephas
       # @param key [String] The key to delete.
       # @return [TrueClass|FalseClass] `true` if the key was in the cache, `false` otherwise.
       def delete(key)
-        raise ArgumentError.new("A Elephas::Providers subclass should override this module.")
+        raise ArgumentError.new("A Elephas::Providers subclass must override this method.")
       end
 
       # Checks if a key exists in the cache.
@@ -43,7 +44,7 @@ module Elephas
       # @param key [String] The key to lookup.
       # @return [TrueClass|FalseClass] `true` if the key is in the cache, `false` otherwise.
       def exists?(key)
-        raise ArgumentError.new("A Elephas::Providers subclass should override this module.")
+        raise ArgumentError.new("A Elephas::Providers subclass must override this method.")
       end
 
       # Returns the current time for comparing with entries TTL.

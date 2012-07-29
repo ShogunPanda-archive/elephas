@@ -472,15 +472,15 @@
       <pre class="lines">
 
 
-48
 49
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/elephas/providers/hash.rb', line 48</span>
+      <pre class="code"><span class="info file"># File 'lib/elephas/providers/hash.rb', line 49</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_fkey'>fkey</span> <span class='op'>=</span> <span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_ensure_string'>ensure_string</span>
@@ -554,13 +554,13 @@
       <pre class="lines">
 
 
-59
 60
 61
-62</pre>
+62
+63</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/elephas/providers/hash.rb', line 59</span>
+      <pre class="code"><span class="info file"># File 'lib/elephas/providers/hash.rb', line 60</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_fkey'>fkey</span> <span class='op'>=</span> <span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_ensure_string'>ensure_string</span>
@@ -692,7 +692,7 @@
       
       
         &mdash;
-        <div class='inline'><p>The value to write. *<em>Setting a value to <code>nil</code> doesn&#39;t mean *deleting</em> the value.</p>
+        <div class='inline'><p>The value to write. Setting a value to <code>nil</code> <strong>doesn&#39;t</strong> mean <em>deleting</em> the value.</p>
 </div>
       
     </li>
@@ -709,7 +709,7 @@
       
       
         &mdash;
-        <div class='inline'><p>A list of options for writing. @see Elephas::Cache.write</p>
+        <div class='inline'><p>A list of options for writing.</p>
 </div>
       
     </li>
@@ -734,21 +734,28 @@
   
 </ul>
 
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="../Cache.html#setup_options-class_method" title="Elephas::Cache.setup_options (method)">Cache.setup_options</a></span></li>
+    
+  </ul>
+
 </div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-37
 38
 39
 40
 41
-42</pre>
+42
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/elephas/providers/hash.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'lib/elephas/providers/hash.rb', line 38</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_fvalue'>fvalue</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Entry</span><span class='period'>.</span><span class='id identifier rubyid_ensure'>ensure</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -766,7 +773,7 @@
 </div>
 
     <div id="footer">
-  Generated on Sat Jul 28 14:29:52 2012 by
+  Generated on Sun Jul 29 10:12:23 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.2.1 (ruby-1.9.2).
 </div>

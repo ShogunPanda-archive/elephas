@@ -5,7 +5,7 @@
 #
 
 module Elephas
-  # This represents a cache entry.
+  # Represents a cache entry.
   class Entry
     # The key for this entry.
     attr_accessor :key
@@ -28,7 +28,7 @@ module Elephas
     # @param value [Object] The value contained in this entry.
     # @param hash [String] The hash for this entry. Should be unique. It is automatically created if not provided.
     # @param ttl [Integer] The time to live (TTL) for this entry. If set to 0 then the entry is not cached.
-    def initialize(key, value, hash = nil, ttl = 3600)
+    def initialize(key, value, hash = nil, ttl = 360000)
       hash = self.class.hashify_key(key) if hash.blank?
       self.key = key
       self.hash = hash
@@ -40,10 +40,12 @@ module Elephas
     # Refreshes the entry.
     #
     # @param save [Boolean] If to save the refresh value in the cache.
+    # @return [Float] The new updated_at value.
     def refresh(save = false)
       self.updated_at = Time.now.to_f
 
-      # TODO: Set this value in the cache
+      Elephas::Cache.provider.write(self.hash, self) if save
+      self.updated_at
     end
 
     # Checks if the entry is still valid.
@@ -52,7 +54,15 @@ module Elephas
     # @return [Boolean] `true` if the entry is still valid, `false` otherwise.
     def valid?(provider = nil)
       provider ||= ::Elephas::Cache.provider
-      provider.now - self.updated_at < self.ttl
+      provider.now - self.updated_at < self.ttl / 1000
+    end
+
+    # Compare to another Entry.
+    #
+    # @param other [Entry] The entry to compare with
+    # @return [Boolean] `true` if the entries are the same, `false` otherwise.
+    def ==(other)
+      other.is_a?(::Elephas::Entry) && [self.key, self.hash, self.value] == [other.key, other.hash, other.value]
     end
 
     # Returns a unique hash for the key.

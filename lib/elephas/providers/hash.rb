@@ -31,8 +31,9 @@ module Elephas
       # Writes a value to the cache.
       #
       # @param key [String] The key to associate the value with.
-      # @param value [Object] The value to write. **Setting a value to `nil` doesn't mean *deleting* the value.
-      # @param options [Hash] A list of options for writing. @see Elephas::Cache.write
+      # @param value [Object] The value to write. Setting a value to `nil` **doesn't** mean *deleting* the value.
+      # @param options [Hash] A list of options for writing.
+      # @see Elephas::Cache.setup_options
       # @return [Object] The value itself.
       def write(key, value, options = {})
         fvalue = ::Elephas::Entry.ensure(value, key, options)
