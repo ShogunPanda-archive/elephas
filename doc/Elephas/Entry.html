@@ -340,7 +340,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Entry) <strong>initialize</strong>(key, value, hash = nil, ttl = 3600) </a>
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Entry) <strong>initialize</strong>(key, value, hash = nil, ttl = 360000) </a>
     
 
     
@@ -417,7 +417,7 @@
     <div class="method_details first">
   <h3 class="signature first" id="initialize-instance_method">
   
-    - (<tt><span class='object_link'><a href="" title="Elephas::Entry (class)">Entry</a></span></tt>) <strong>initialize</strong>(key, value, hash = nil, ttl = 3600) 
+    - (<tt><span class='object_link'><a href="" title="Elephas::Entry (class)">Entry</a></span></tt>) <strong>initialize</strong>(key, value, hash = nil, ttl = 360000) 
   
 
   
@@ -489,7 +489,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>3600</tt>)</em>
+        <em class="default">(defaults to: <tt>360000</tt>)</em>
       
       
         &mdash;
@@ -519,7 +519,7 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/elephas/entry.rb', line 31</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_hash'>hash</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_ttl'>ttl</span> <span class='op'>=</span> <span class='int'>3600</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_hash'>hash</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_ttl'>ttl</span> <span class='op'>=</span> <span class='int'>360000</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_hash'>hash</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_hashify_key'>hashify_key</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_hash'>hash</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_key'>key</span> <span class='op'>=</span> <span class='id identifier rubyid_key'>key</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_hash'>hash</span> <span class='op'>=</span> <span class='id identifier rubyid_hash'>hash</span>
@@ -1194,7 +1194,7 @@
 </div>
 
     <div id="footer">
-  Generated on Sun Jul 29 10:12:23 2012 by
+  Generated on Sun Jul 29 10:32:07 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.2.1 (ruby-1.9.2).
 </div>

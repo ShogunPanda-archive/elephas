@@ -98,14 +98,23 @@ module Elephas
       end
 
       # Setups options for use into the framework.
+      # Valid options are:
+      #
+      #   * **:ttl**: The TTL (time to live, in milliseconds) of the entry. It means how long will the value stay in cache. Setting it to 0 or less means never cache the entry.
+      #   * **:force**: Setting it to `true` will always skip the cache.
+      #   * **:key**: The key associated to this value. **You should never set this option directly.**
+      #   * **:prefix**: The prefix used in cache. This is used to avoid conflicts with other caching frameworks.
+      #   * **:complete_key**: The complete key used for computing the hash. By default is concatenation of `:key` and `:prefix` options.
+      #   * **:hash**: The hash used to store the key in the cache. Should be unique
+      #   * **:as_entry**: In `Elephas::Cache.use`, setting this to `true` will return the entire `Entry` object rather than the value only.
       #
       # @param options [Object] An initial setup.
-      # TODO: Insert options documentation.
       # @param key [String] The key to associate to this options.
       # @return [Hash] An options hash.
       def setup_options(options, key)
         options = {} if !options.is_a?(::Hash)
-        options = {:key => key.ensure_string, :ttl => 1.hour * 1000, :force => false, :as_entry => false}.merge(options)
+        options = {:ttl => 1.hour * 1000, :force => false, :as_entry => false}.merge(options)
+        options[:key] ||= key.ensure_string
         options[:ttl] == options[:ttl].blank? ? 1.hour * 1000 : [options[:ttl].to_integer, 0].max
         options[:force] = options[:force].to_boolean
         options[:prefix] = options[:prefix].present? ? options[:prefix] : "elephas-#{::Elephas::Version::STRING}-cache"
