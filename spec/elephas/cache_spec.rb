@@ -80,23 +80,28 @@ describe ::Elephas::Cache do
 
   describe "setup_options" do
     it "should set good defaults for options" do
+      hashes = {
+        :base => ::Elephas::Entry.hashify_key("#{::Elephas::Cache.default_prefix}[KEY]"),
+        :alternative => ::Elephas::Entry.hashify_key("prefix[KEY]")
+      }
+      
       options_hashes = [
         nil,
         "A",
         {:ttl => 2.hour},
         {:force => true},
         {:as_entry => true},
-        {:prefix => "prefix", :hash => "1f3caa3bd0b7ba49dc25f9445abdd4fed6fe65236681b392f0da251673885ea9"},
+        {:prefix => "prefix", :hash => hashes[:alternative]},
         {:hash => "hash"}
       ]
 
       reference_hashes = [
-        {:key => "KEY", :ttl => 1.hour * 1000, :force => false, :as_entry => false, :prefix => ::Elephas::Cache.default_prefix, :complete_key => "#{::Elephas::Cache.default_prefix}[KEY]", :hash => "8a7675d5f1d9b163bb7bb4329c1a59ff18870fad4ed35a3a2e8d195a6f3c0332"},
-        {:key => "KEY", :ttl => 1.hour * 1000, :force => false, :as_entry => false, :prefix => ::Elephas::Cache.default_prefix, :complete_key => "#{::Elephas::Cache.default_prefix}[KEY]", :hash => "8a7675d5f1d9b163bb7bb4329c1a59ff18870fad4ed35a3a2e8d195a6f3c0332"},
-        {:key => "KEY", :ttl => 2.hour, :force => false, :as_entry => false, :prefix => ::Elephas::Cache.default_prefix, :complete_key => "#{::Elephas::Cache.default_prefix}[KEY]", :hash => "8a7675d5f1d9b163bb7bb4329c1a59ff18870fad4ed35a3a2e8d195a6f3c0332"},
-        {:key => "KEY", :ttl => 1.hour * 1000, :force => true, :as_entry => false, :prefix => ::Elephas::Cache.default_prefix, :complete_key => "#{::Elephas::Cache.default_prefix}[KEY]", :hash => "8a7675d5f1d9b163bb7bb4329c1a59ff18870fad4ed35a3a2e8d195a6f3c0332"},
-        {:key => "KEY", :ttl => 1.hour * 1000, :force => false, :as_entry => true, :prefix => ::Elephas::Cache.default_prefix, :complete_key => "#{::Elephas::Cache.default_prefix}[KEY]", :hash => "8a7675d5f1d9b163bb7bb4329c1a59ff18870fad4ed35a3a2e8d195a6f3c0332"},
-        {:key => "KEY", :ttl => 1.hour * 1000, :force => false, :as_entry => false, :prefix => "prefix", :complete_key => "prefix[KEY]", :hash => "1f3caa3bd0b7ba49dc25f9445abdd4fed6fe65236681b392f0da251673885ea9"},
+        {:key => "KEY", :ttl => 1.hour * 1000, :force => false, :as_entry => false, :prefix => ::Elephas::Cache.default_prefix, :complete_key => "#{::Elephas::Cache.default_prefix}[KEY]", :hash => hashes[:base]},
+        {:key => "KEY", :ttl => 1.hour * 1000, :force => false, :as_entry => false, :prefix => ::Elephas::Cache.default_prefix, :complete_key => "#{::Elephas::Cache.default_prefix}[KEY]", :hash => hashes[:base]},
+        {:key => "KEY", :ttl => 2.hour, :force => false, :as_entry => false, :prefix => ::Elephas::Cache.default_prefix, :complete_key => "#{::Elephas::Cache.default_prefix}[KEY]", :hash => hashes[:base]},
+        {:key => "KEY", :ttl => 1.hour * 1000, :force => true, :as_entry => false, :prefix => ::Elephas::Cache.default_prefix, :complete_key => "#{::Elephas::Cache.default_prefix}[KEY]", :hash => hashes[:base]},
+        {:key => "KEY", :ttl => 1.hour * 1000, :force => false, :as_entry => true, :prefix => ::Elephas::Cache.default_prefix, :complete_key => "#{::Elephas::Cache.default_prefix}[KEY]", :hash => hashes[:base]},
+        {:key => "KEY", :ttl => 1.hour * 1000, :force => false, :as_entry => false, :prefix => "prefix", :complete_key => "prefix[KEY]", :hash => hashes[:alternative]},
         {:key => "KEY", :ttl => 1.hour * 1000, :force => false, :as_entry => false, :prefix => ::Elephas::Cache.default_prefix, :complete_key => "#{::Elephas::Cache.default_prefix}[KEY]", :hash => "hash"}
       ]
 

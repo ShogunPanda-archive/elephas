@@ -6,9 +6,9 @@
 
 $KCODE='UTF8' if RUBY_VERSION < '1.9'
 
-require "cowtech-extensions"
+require "lazier"
 require "digest/sha2"
-Cowtech::Extensions.load!("boolean", "math", "object")
+Lazier.load!("boolean", "math", "object")
 
 require "elephas/version" if !defined?(Elephas::Version)
 require "elephas/entry"
