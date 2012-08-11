@@ -1,5 +1,6 @@
+Gemfile.lock
+tester.rb
 coverage/
 pkg/
 .idea/
-Gemfile.lock
-.yardoc
+.yardoc/
