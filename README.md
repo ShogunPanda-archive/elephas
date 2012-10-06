@@ -2,6 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/ShogunPanda/elephas.png?branch=master)](http://travis-ci.org/ShogunPanda/elephas)
 [![Dependency Status](https://gemnasium.com/ShogunPanda/elephas.png?travis)](https://gemnasium.com/ShogunPanda/elephas)
+[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/ShogunPanda/elephas)
 
 A storage agnostic caching framework.
 
