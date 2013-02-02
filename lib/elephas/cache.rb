@@ -34,9 +34,11 @@ module Elephas
       # ```
       #
       # @param key [String] The key to lookup.
+      # @param options [Hash] A list of options for managing this key.
+      # @param block [Proc] An optional block to run to compute the value for the key if nothing is found.
       # @return [Object|Entry] The found or newly-set value associated to the key.
-      # @see
-      def use(key, options = {})
+      # @see .setup_options
+      def use(key, options = {}, &block)
         rv = nil
 
         # Get options
@@ -44,12 +46,7 @@ module Elephas
 
         # Check if the storage has the value (if we don't have to skip the cache)
         rv = self.provider.read(options[:hash]) if options[:force] == false && options[:ttl] > 0
-
-        if rv.nil? && block_given? then # Try to compute the value from the block
-          rv = yield(options)
-          rv = ::Elephas::Entry.ensure(rv, options[:complete_key], options) # Make sure is an entry
-          Elephas::Cache.write(rv.hash, rv, options) if !rv.value.nil? && options[:ttl] > 0 # We have a value and we have to store it
-        end
+        rv = compute_value(options, &block) if rv.nil? && block # Try to compute the value from the block
 
         # Return value
         options[:as_entry] ? rv : rv.value.dup
@@ -114,19 +111,42 @@ module Elephas
       def setup_options(options, key)
         options = {} if !options.is_a?(::Hash)
         options = {ttl: 1.hour * 1000, force: false, as_entry: false}.merge(options)
-        options[:key] ||= key.ensure_string
-        options[:ttl] == options[:ttl].blank? ? 1.hour * 1000 : [options[:ttl].to_integer, 0].max
-        options[:force] = options[:force].to_boolean
-        options[:prefix] = options[:prefix].present? ? options[:prefix] : "elephas-#{::Elephas::Version::STRING}-cache"
+
+        # Sanitize options.
+        options = sanitize_options(options, key)
 
         # Wrap the final key to ensure we don't have colliding namespaces.
         options[:complete_key] ||= "#{options[:prefix]}[#{options[:key]}]"
 
-        # Compute the hash key used for referencing this value
+        # Compute the hash key used for referencing this value.
         options[:hash] ||= ::Elephas::Entry.hashify_key(options[:complete_key])
 
         options
       end
+
+      private
+        # Computes a new value and saves it to the cache.
+        # @param options [Hash] A list of options for managing the value.
+        # @param block [Proc] The block to run to compute the value.
+        # @return [Object|Entry] The new value.
+        def compute_value(options, &block)
+          rv = block.call(options)
+          rv = ::Elephas::Entry.ensure(rv, options[:complete_key], options) # Make sure is an entry
+          Elephas::Cache.write(rv.hash, rv, options) if !rv.value.nil? && options[:ttl] > 0 # We have a value and we have to store it
+          rv
+        end
+
+        # Sanitizes options for safe usage.
+        # @param options [Object] An initial setup.
+        # @param key [String] The key to associate to this options.
+        # @return [Hash] An options hash.
+        def sanitize_options(options, key)
+          options[:key] ||= key.ensure_string
+          options[:ttl] == options[:ttl].blank? ? 1.hour * 1000 : [options[:ttl].to_integer, 0].max
+          options[:force] = options[:force].to_boolean
+          options[:prefix] = options[:prefix].present? ? options[:prefix] : "elephas-#{::Elephas::Version::STRING}-cache"
+          options
+        end
     end
   end
 end

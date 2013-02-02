@@ -7,11 +7,16 @@
 module Elephas
   # Represents a cache entry.
   #
-  # @attr key [String] The key for this entry.
-  # @attr hash [String] The hashed (unique) key for this entry.
-  # @attr value [Object] The value contained in this entry.
-  # @attr ttl [Fixnum] The expected TTL of the entry, in milliseconds.
-  # @attr updated_at [Fixnum] The last update date of the entry, in UNIX timestamp (with milliseconds).
+  # @attribute key
+  #   @return [String] The key for this entry.
+  # @attribute hash
+  #   @return [String] The hashed (unique) key for this entry.
+  # @attribute value
+  #   @return [Object] The value contained in this entry.
+  # @attribute ttl
+  #   @return [Fixnum] The expected TTL of the entry, in milliseconds.
+  # @attribute updated_at
+  #   @return [Fixnum] The last update date of the entry, in UNIX timestamp (with milliseconds).
   class Entry
     attr_accessor :key
     attr_accessor :hash
@@ -72,6 +77,7 @@ module Elephas
     #
     # @param value [Object] The object to check.
     # @param key [Object] The key associated to this object.
+    # @param options [Hash] Options to manage the value.
     # @return [Entry] The wrapped object.
     def self.ensure(value, key, options = {})
       rv = value

@@ -8,7 +8,8 @@ module Elephas
   module Providers
     # This is a simple providers, which uses an hash for storing the values.
     #
-    # @attr data [Object] The internal hash used by the provider.
+    # @attribute data
+    #   @return [Hash] The internal hash used by the provider.
     class Hash
       include Elephas::Providers::Base
       attr_accessor :data
