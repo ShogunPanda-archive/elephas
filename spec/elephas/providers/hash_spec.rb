@@ -1,6 +1,6 @@
 # encoding: utf-8
 #
-# This file is part of the elephas gem. Copyright (C) 2012 and above Shogun <shogun_panda@me.com>.
+# This file is part of the elephas gem. Copyright (C) 2013 and above Shogun <shogun_panda@me.com>.
 # Licensed under the MIT license, which can be found at http://www.opensource.org/licenses/mit-license.php.
 #
 
@@ -8,7 +8,7 @@ require "spec_helper"
 
 describe Elephas::Providers::Hash do
   subject { ::Elephas::Providers::Hash.new }
-  let!(:value) { subject.write("KEY", ::Elephas::Entry.ensure("VALUE", "KEY", {:ttl => 3600})) }
+  let!(:value) { subject.write("KEY", ::Elephas::Entry.ensure("VALUE", "KEY", {ttl: 3600})) }
 
   describe "#initialize" do
     it "should create a store with an empty hash" do
@@ -16,7 +16,7 @@ describe Elephas::Providers::Hash do
     end
 
     it "should create a store with an given hash" do
-      expect(::Elephas::Providers::Hash.new({:a => :b}).data).to eq({:a => :b})
+      expect(::Elephas::Providers::Hash.new({a: :b}).data).to eq({a: :b})
     end
 
     it "should ensure that the store is an Hash" do

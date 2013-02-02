@@ -1,6 +1,6 @@
 # encoding: utf-8
 #
-# This file is part of the elephas gem. Copyright (C) 2012 and above Shogun <shogun_panda@me.com>.
+# This file is part of the elephas gem. Copyright (C) 2013 and above Shogun <shogun_panda@me.com>.
 # Licensed under the MIT license, which can be found at http://www.opensource.org/licenses/mit-license.php.
 #
 
@@ -11,13 +11,14 @@ module Elephas
     # The base provider, with all methods a valid provider should override.
     module Base
       extend ActiveSupport::Concern
+      include Lazier::I18n
 
       # Reads a value from the cache.
       #
       # @param key [String] The key to lookup.
       # @return [Entry|NilClass] The read value or `nil`.
       def read(key)
-        raise ArgumentError.new("A Elephas::Providers subclass must override this method.")
+        unimplemented
       end
 
       # Writes a value to the cache.
@@ -28,7 +29,7 @@ module Elephas
       # @see Elephas::Cache.setup_options
       # @return [Object] The value itself.
       def write(key, value, options = {})
-        raise ArgumentError.new("A Elephas::Providers subclass must override this method.")
+        unimplemented
       end
 
       # Deletes a value from the cache.
@@ -36,7 +37,7 @@ module Elephas
       # @param key [String] The key to delete.
       # @return [TrueClass|FalseClass] `true` if the key was in the cache, `false` otherwise.
       def delete(key)
-        raise ArgumentError.new("A Elephas::Providers subclass must override this method.")
+        unimplemented
       end
 
       # Checks if a key exists in the cache.
@@ -44,7 +45,7 @@ module Elephas
       # @param key [String] The key to lookup.
       # @return [TrueClass|FalseClass] `true` if the key is in the cache, `false` otherwise.
       def exists?(key)
-        raise ArgumentError.new("A Elephas::Providers subclass must override this method.")
+        unimplemented
       end
 
       # Returns the current time for comparing with entries TTL.
@@ -53,6 +54,13 @@ module Elephas
       def now
         ::Time.now.to_f
       end
+
+      private
+        # Marks a method as unimplemented.
+        def unimplemented
+          self.i18n_setup(:elephas, ::File.absolute_path(::Pathname.new(::File.dirname(__FILE__)).to_s + "/../../locales/")) if !@i18n
+          raise ArgumentError.new(self.i18n.unimplemented)
+        end
     end
   end
 end

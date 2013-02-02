@@ -1,14 +1,14 @@
 # encoding: utf-8
 #
-# This file is part of the elephas gem. Copyright (C) 2012 and above Shogun <shogun_panda@me.com>.
+# This file is part of the elephas gem. Copyright (C) 2013 and above Shogun <shogun_panda@me.com>.
 # Licensed under the MIT license, which can be found at http://www.opensource.org/licenses/mit-license.php.
 #
 
 module Elephas
   # This is the main class of the framework. Use only this class to access the cache.
   class Cache
+    # @attr provider [Provider] The provider used for the caching.
     class << self
-      # The provider used for the caching.
       attr_accessor :provider
 
       # This is the main method of the framework.
@@ -113,7 +113,7 @@ module Elephas
       # @return [Hash] An options hash.
       def setup_options(options, key)
         options = {} if !options.is_a?(::Hash)
-        options = {:ttl => 1.hour * 1000, :force => false, :as_entry => false}.merge(options)
+        options = {ttl: 1.hour * 1000, force: false, as_entry: false}.merge(options)
         options[:key] ||= key.ensure_string
         options[:ttl] == options[:ttl].blank? ? 1.hour * 1000 : [options[:ttl].to_integer, 0].max
         options[:force] = options[:force].to_boolean

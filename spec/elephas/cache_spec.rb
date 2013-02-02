@@ -1,13 +1,13 @@
 # encoding: utf-8
 #
-# This file is part of the elephas gem. Copyright (C) 2012 and above Shogun <shogun_panda@me.com>.
+# This file is part of the elephas gem. Copyright (C) 2013 and above Shogun <shogun_panda@me.com>.
 # Licensed under the MIT license, which can be found at http://www.opensource.org/licenses/mit-license.php.
 #
 
 require "spec_helper"
 
 describe ::Elephas::Cache do
-  let(:entry) { ::Elephas::Entry.ensure("VALUE", ::Elephas::Cache.default_prefix + "[KEY]", {:ttl => 3600}) }
+  let(:entry) { ::Elephas::Entry.ensure("VALUE", ::Elephas::Cache.default_prefix + "[KEY]", {ttl: 3600}) }
 
   describe ".use" do
     before(:each) do
@@ -20,9 +20,9 @@ describe ::Elephas::Cache do
     end
 
     it "should skip the provider if requested to" do
-      ::Elephas::Cache.use("KEY", {:ttl => 0}) do "VALUE" end
+      ::Elephas::Cache.use("KEY", {ttl: 0}) do "VALUE" end
       ::Elephas::Cache.provider.should_not_receive(:read)
-      ::Elephas::Cache.use("KEY", {:force => true}) do "VALUE" end
+      ::Elephas::Cache.use("KEY", {force: true}) do "VALUE" end
       ::Elephas::Cache.provider.should_not_receive(:read)
     end
 
@@ -44,7 +44,7 @@ describe ::Elephas::Cache do
       ::Elephas::Cache.use("KEY") do "VALUE" end
 
       expect(::Elephas::Cache.use("KEY")).to eq("VALUE")
-      value = ::Elephas::Cache.use("KEY", {:as_entry => true})
+      value = ::Elephas::Cache.use("KEY", {as_entry: true})
       expect(value).to be_a(::Elephas::Entry)
       expect(value.value).to eq("VALUE")
     end
@@ -81,28 +81,28 @@ describe ::Elephas::Cache do
   describe "setup_options" do
     it "should set good defaults for options" do
       hashes = {
-        :base => ::Elephas::Entry.hashify_key("#{::Elephas::Cache.default_prefix}[KEY]"),
-        :alternative => ::Elephas::Entry.hashify_key("prefix[KEY]")
+        base: ::Elephas::Entry.hashify_key("#{::Elephas::Cache.default_prefix}[KEY]"),
+        alternative: ::Elephas::Entry.hashify_key("prefix[KEY]")
       }
       
       options_hashes = [
         nil,
         "A",
-        {:ttl => 2.hour},
-        {:force => true},
-        {:as_entry => true},
-        {:prefix => "prefix", :hash => hashes[:alternative]},
-        {:hash => "hash"}
+        {ttl: 2.hour},
+        {force: true},
+        {as_entry: true},
+        {prefix: "prefix", hash: hashes[:alternative]},
+        {hash: "hash"}
       ]
 
       reference_hashes = [
-        {:key => "KEY", :ttl => 1.hour * 1000, :force => false, :as_entry => false, :prefix => ::Elephas::Cache.default_prefix, :complete_key => "#{::Elephas::Cache.default_prefix}[KEY]", :hash => hashes[:base]},
-        {:key => "KEY", :ttl => 1.hour * 1000, :force => false, :as_entry => false, :prefix => ::Elephas::Cache.default_prefix, :complete_key => "#{::Elephas::Cache.default_prefix}[KEY]", :hash => hashes[:base]},
-        {:key => "KEY", :ttl => 2.hour, :force => false, :as_entry => false, :prefix => ::Elephas::Cache.default_prefix, :complete_key => "#{::Elephas::Cache.default_prefix}[KEY]", :hash => hashes[:base]},
-        {:key => "KEY", :ttl => 1.hour * 1000, :force => true, :as_entry => false, :prefix => ::Elephas::Cache.default_prefix, :complete_key => "#{::Elephas::Cache.default_prefix}[KEY]", :hash => hashes[:base]},
-        {:key => "KEY", :ttl => 1.hour * 1000, :force => false, :as_entry => true, :prefix => ::Elephas::Cache.default_prefix, :complete_key => "#{::Elephas::Cache.default_prefix}[KEY]", :hash => hashes[:base]},
-        {:key => "KEY", :ttl => 1.hour * 1000, :force => false, :as_entry => false, :prefix => "prefix", :complete_key => "prefix[KEY]", :hash => hashes[:alternative]},
-        {:key => "KEY", :ttl => 1.hour * 1000, :force => false, :as_entry => false, :prefix => ::Elephas::Cache.default_prefix, :complete_key => "#{::Elephas::Cache.default_prefix}[KEY]", :hash => "hash"}
+        {key: "KEY", ttl: 1.hour * 1000, force: false, as_entry: false, prefix: ::Elephas::Cache.default_prefix, complete_key: "#{::Elephas::Cache.default_prefix}[KEY]", hash: hashes[:base]},
+        {key: "KEY", ttl: 1.hour * 1000, force: false, as_entry: false, prefix: ::Elephas::Cache.default_prefix, complete_key: "#{::Elephas::Cache.default_prefix}[KEY]", hash: hashes[:base]},
+        {key: "KEY", ttl: 2.hour, force: false, as_entry: false, prefix: ::Elephas::Cache.default_prefix, complete_key: "#{::Elephas::Cache.default_prefix}[KEY]", hash: hashes[:base]},
+        {key: "KEY", ttl: 1.hour * 1000, force: true, as_entry: false, prefix: ::Elephas::Cache.default_prefix, complete_key: "#{::Elephas::Cache.default_prefix}[KEY]", hash: hashes[:base]},
+        {key: "KEY", ttl: 1.hour * 1000, force: false, as_entry: true, prefix: ::Elephas::Cache.default_prefix, complete_key: "#{::Elephas::Cache.default_prefix}[KEY]", hash: hashes[:base]},
+        {key: "KEY", ttl: 1.hour * 1000, force: false, as_entry: false, prefix: "prefix", complete_key: "prefix[KEY]", hash: hashes[:alternative]},
+        {key: "KEY", ttl: 1.hour * 1000, force: false, as_entry: false, prefix: ::Elephas::Cache.default_prefix, complete_key: "#{::Elephas::Cache.default_prefix}[KEY]", hash: "hash"}
       ]
 
       options_hashes.each_with_index do |options, i|

@@ -1,6 +1,6 @@
 # encoding: utf-8
 #
-# This file is part of the elephas gem. Copyright (C) 2012 and above Shogun <shogun_panda@me.com>.
+# This file is part of the elephas gem. Copyright (C) 2013 and above Shogun <shogun_panda@me.com>.
 # Licensed under the MIT license, which can be found at http://www.opensource.org/licenses/mit-license.php.
 #
 
@@ -26,11 +26,10 @@ module Elephas
       # @see Elephas::Cache.setup_options
       # @return [Object] The value itself.
       def write(key, value, options = {})
-        fvalue = ::Elephas::Entry.ensure(value, key, options)
-        fvalue.refresh
-
-        Rails.cache.write(key, value, :expires_in => fvalue.ttl)
-        value
+        entry = ::Elephas::Entry.ensure(value, key, options)
+        entry.refresh
+        Rails.cache.write(key, entry, expires_in: entry.ttl)
+        entry
       end
 
       # Deletes a value from the cache.
@@ -38,9 +37,9 @@ module Elephas
       # @param key [String] The key to delete.
       # @return [Boolean] `true` if the key was in the cache, `false` otherwise.
       def delete(key)
-        fkey = key.ensure_string
-        rv = Rails.cache.exist?(fkey)
-        Rails.cache.delete(fkey)
+        key = key.ensure_string
+        rv = Rails.cache.exist?(key)
+        Rails.cache.delete(key)
         rv
       end
 
@@ -49,8 +48,8 @@ module Elephas
       # @param key [String] The key to lookup.
       # @return [Boolean] `true` if the key is in the cache, `false` otherwise.
       def exists?(key)
-        fkey = key.ensure_string
-        Rails.cache.exist?(fkey) && Rails.cache.read(fkey).valid?
+        key = key.ensure_string
+        Rails.cache.exist?(key) && Rails.cache.read(key).valid?
       end
     end
   end

@@ -1,25 +1,22 @@
 # encoding: utf-8
 #
-# This file is part of the elephas gem. Copyright (C) 2012 and above Shogun <shogun_panda@me.com>.
+# This file is part of the elephas gem. Copyright (C) 2013 and above Shogun <shogun_panda@me.com>.
 # Licensed under the MIT license, which can be found at http://www.opensource.org/licenses/mit-license.php.
 #
 
 module Elephas
   # Represents a cache entry.
+  #
+  # @attr key [String] The key for this entry.
+  # @attr hash [String] The hashed (unique) key for this entry.
+  # @attr value [Object] The value contained in this entry.
+  # @attr ttl [Fixnum] The expected TTL of the entry, in milliseconds.
+  # @attr updated_at [Fixnum] The last update date of the entry, in UNIX timestamp (with milliseconds).
   class Entry
-    # The key for this entry.
     attr_accessor :key
-
-    # The hashed (unique) key for this entry.
     attr_accessor :hash
-
-    # The value contained in this entry.
     attr_accessor :value
-
-    # The expected TTL of the entry, in milliseconds.
     attr_accessor :ttl
-
-    # The last update date of the entry, in UNIX timestamp (with milliseconds).
     attr_accessor :updated_at
 
     # Creates a new entry.
@@ -29,11 +26,10 @@ module Elephas
     # @param hash [String] The hash for this entry. Should be unique. It is automatically created if not provided.
     # @param ttl [Integer] The time to live (TTL) for this entry. If set to 0 then the entry is not cached.
     def initialize(key, value, hash = nil, ttl = 360000)
-      hash = self.class.hashify_key(key) if hash.blank?
-      self.key = key
-      self.hash = hash
-      self.value = value
-      self.ttl = ttl
+      @key = key
+      @hash = hash.present? ? hash : self.class.hashify_key(key)
+      @value = value
+      @ttl = ttl
       self.refresh
     end
 
@@ -42,10 +38,9 @@ module Elephas
     # @param save [Boolean] If to save the refresh value in the cache.
     # @return [Float] The new updated_at value.
     def refresh(save = false)
-      self.updated_at = Time.now.to_f
-
-      Elephas::Cache.provider.write(self.hash, self) if save
-      self.updated_at
+      @updated_at = Time.now.to_f
+      Elephas::Cache.provider.write(@hash, self) if save
+      @updated_at
     end
 
     # Checks if the entry is still valid.
@@ -57,12 +52,12 @@ module Elephas
       provider.now - self.updated_at < self.ttl / 1000
     end
 
-    # Compare to another Entry.
+    # Compares to another Entry.
     #
     # @param other [Entry] The entry to compare with
     # @return [Boolean] `true` if the entries are the same, `false` otherwise.
     def ==(other)
-      other.is_a?(::Elephas::Entry) && [self.key, self.hash, self.value] == [other.key, other.hash, other.value]
+      other.is_a?(::Elephas::Entry) && [@key, @hash, @value] == [other.key, other.hash, other.value]
     end
 
     # Returns a unique hash for the key.
@@ -73,7 +68,7 @@ module Elephas
       Digest::SHA2.hexdigest(key.ensure_string)
     end
 
-    # Ensure that the value is an Entry.
+    # Ensures that the value is an Entry.
     #
     # @param value [Object] The object to check.
     # @param key [Object] The key associated to this object.
