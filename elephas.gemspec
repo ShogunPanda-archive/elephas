@@ -22,15 +22,7 @@ Gem::Specification.new do |gem|
   gem.test_files = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
-  gem.required_ruby_version = ">= 1.9.2"
+  gem.required_ruby_version = ">= 1.9.3"
 
-  gem.add_dependency("lazier", "~> 2.5.0")
-
-  gem.add_development_dependency("rspec", "~> 2.12.0")
-  gem.add_development_dependency("rake", "~> 10.0.3")
-  gem.add_development_dependency("simplecov", "~> 0.7.1")
-  gem.add_development_dependency("pry", ">= 0")
-  gem.add_development_dependency("yard", "~> 0.8.3")
-  gem.add_development_dependency("redcarpet", "~> 2.2.2")
-  gem.add_development_dependency("github-markup", "~> 0.7.5")
+  gem.add_dependency("lazier", "~> 2.6.3")
 end
