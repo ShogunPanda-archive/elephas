@@ -6,7 +6,7 @@
 <title>
   File: README
   
-    &mdash; Documentation by YARD 0.8.3
+    &mdash; Documentation by YARD 0.8.4.1
   
 </title>
 
@@ -79,14 +79,14 @@
 
 <p>At first you have to setup a provider (that is, a storage) for the Elephas. By default it uses an internal hash, and also Rails is supported.</p>
 
-<pre class="code ruby"><code><span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Cache</span><span class='period'>.</span><span class='id identifier rubyid_provider'>provider</span> <span class='op'>=</span> <span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Providers</span><span class='op'>::</span><span class='const'>RubyOnRails</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<pre class="code ruby"><code class="ruby"><span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Cache</span><span class='period'>.</span><span class='id identifier rubyid_provider'>provider</span> <span class='op'>=</span> <span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Providers</span><span class='op'>::</span><span class='const'>RubyOnRails</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
 </code></pre>
 
 <p>After that, you can query the framework for a value use the <code>use</code> method.</p>
 
 <p>You should also pass a block to the method, so that the framework use that for computing the value of the cache entry.</p>
 
-<pre class="code ruby"><code><span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Cache</span><span class='period'>.</span><span class='id identifier rubyid_use'>use</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>KEY</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_options'>options</span><span class='op'>|</span>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Cache</span><span class='period'>.</span><span class='id identifier rubyid_use'>use</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>KEY</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_options'>options</span><span class='op'>|</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>VALUE</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span>
 <span class='comment'># =&gt; &quot;VALUE&quot;
@@ -124,9 +124,9 @@
 </div></div>
 
     <div id="footer">
-  Generated on Sat Feb  2 17:06:57 2013 by
+  Generated on Thu Feb  7 08:33:46 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.3 (ruby-1.9.3).
+  0.8.4.1 (ruby-1.9.3).
 </div>
 
   </body>
