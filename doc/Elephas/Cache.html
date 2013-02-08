@@ -672,13 +672,13 @@
 Valid options are:</p>
 
 <ul>
-<li><strong>:ttl</strong>: The TTL (time to live, in milliseconds) of the entry. It means how long will the value stay in cache. Setting it to 0 or less means never cache the entry.</li>
-<li><strong>:force</strong>: Setting it to <code>true</code> will always skip the cache.</li>
-<li><strong>:key</strong>: The key associated to this value. <strong>You should never set this option directly.</strong></li>
-<li><strong>:prefix</strong>: The prefix used in cache. This is used to avoid conflicts with other caching frameworks.</li>
-<li><strong>:complete_key</strong>: The complete key used for computing the hash. By default is concatenation of <code>:key</code> and <code>:prefix</code> options.</li>
-<li><strong>:hash</strong>: The hash used to store the key in the cache. Should be unique</li>
-<li><strong>:as_entry</strong>: In <code>Elephas::Cache.use</code>, setting this to <code>true</code> will return the entire <code>Entry</code> object rather than the value only.</li>
+  <li><strong>:ttl</strong>: The TTL (time to live, in milliseconds) of the entry. It means how long will the value stay in cache. Setting it to 0 or less means never cache the entry.</li>
+  <li><strong>:force</strong>: Setting it to <code>true</code> will always skip the cache.</li>
+  <li><strong>:key</strong>: The key associated to this value. <strong>You should never set this option directly.</strong></li>
+  <li><strong>:prefix</strong>: The prefix used in cache. This is used to avoid conflicts with other caching frameworks.</li>
+  <li><strong>:complete_key</strong>: The complete key used for computing the hash. By default is concatenation of <code>:key</code> and <code>:prefix</code> options.</li>
+  <li><strong>:hash</strong>: The hash used to store the key in the cache. Should be unique</li>
+  <li><strong>:as_entry</strong>: In <code>Elephas::Cache.use</code>, setting this to <code>true</code> will return the entire <code>Entry</code> object rather than the value only.</li>
 </ul>
 
 
@@ -798,22 +798,23 @@ Valid options are:</p>
 
 <p>It tries reading a key from the cache.</p>
 
-<p>If it doesn&#39;t find it, it uses the provided block (which receives options as argument) to compute its value and then store it into the cache for later usages.</p>
+<p>If it doesn&#8217;t find it, it uses the provided block (which receives options as argument) to compute its value and then store it into the cache for later usages.</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Cache</span><span class='period'>.</span><span class='id identifier rubyid_use'>use</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>KEY</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_options'>options</span><span class='op'>|</span>
-  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>VALUE</span><span class='tstring_end'>&quot;</span></span>
-<span class='kw'>end</span>
+<p>```ruby
+value = Elephas::Cache.use(&#8220;KEY&#8221;) do |options|
+  &#8220;VALUE&#8221;
+end</p>
 
-<span class='id identifier rubyid_value'>value</span>
-<span class='comment'># =&gt; &quot;VALUE&quot;
-</span>
-<span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Cache</span><span class='period'>.</span><span class='id identifier rubyid_use'>use</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>KEY</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_options'>options</span><span class='op'>|</span>
-  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ANOTHER VALUE</span><span class='tstring_end'>&quot;</span></span>
-<span class='kw'>end</span>
+<p>value
+# =&gt; &#8220;VALUE&#8221;</p>
 
-<span class='id identifier rubyid_value'>value</span>
-<span class='comment'># =&gt; &quot;VALUE&quot;
-</span></code></pre>
+<p>value = Elephas::Cache.use(&#8220;KEY&#8221;) do |options|
+  &#8220;ANOTHER VALUE&#8221;
+end</p>
+
+<p>value
+# =&gt; &#8220;VALUE&#8221;
+```</p>
 
 
   </div>
@@ -982,7 +983,7 @@ Valid options are:</p>
       
       
         &mdash;
-        <div class='inline'><p>The value to write. Setting a value to <code>nil</code> <strong>doesn&#39;t</strong> mean <em>deleting</em> the value.</p>
+        <div class='inline'><p>The value to write. Setting a value to <code>nil</code> <strong>doesn’t</strong> mean <em>deleting</em> the value.</p>
 </div>
       
     </li>
@@ -1057,7 +1058,7 @@ Valid options are:</p>
 </div>
 
     <div id="footer">
-  Generated on Thu Feb  7 08:33:46 2013 by
+  Generated on Thu Feb  7 17:49:25 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.4.1 (ruby-1.9.3).
 </div>

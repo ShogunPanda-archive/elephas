@@ -43,7 +43,7 @@ module Elephas
     # @param save [Boolean] If to save the refresh value in the cache.
     # @return [Float] The new updated_at value.
     def refresh(save = false)
-      @updated_at = Time.now.to_f
+      @updated_at = get_new_updated_at(@updated_at)
       Elephas::Cache.provider.write(@hash, self) if save
       @updated_at
     end
@@ -93,5 +93,16 @@ module Elephas
 
       rv
     end
+
+    private
+      # Makes sure a new updated at is generated.
+      #
+      # @param initial [Float] Old value.
+      # @return [Float] New value.
+      def get_new_updated_at(initial)
+        rv = Time.now.to_f
+        rv += 1E6 if rv == initial
+        rv
+      end
   end
 end

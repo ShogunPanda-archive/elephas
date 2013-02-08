@@ -61,38 +61,40 @@
 
     <iframe id="search_frame"></iframe>
 
-    <div id="content"><div id='filecontents'><h1>elephas</h1>
+    <div id="content"><div id='filecontents'><h1 id="elephas">elephas</h1>
 
-<p><a href="http://travis-ci.org/ShogunPanda/elephas"><img src="https://secure.travis-ci.org/ShogunPanda/elephas.png?branch=master" alt="Build Status"></a>
-<a href="https://gemnasium.com/ShogunPanda/elephas"><img src="https://gemnasium.com/ShogunPanda/elephas.png?travis" alt="Dependency Status"></a>
-<a href="https://codeclimate.com/github/ShogunPanda/elephas"><img src="https://codeclimate.com/github/ShogunPanda/elephas.png" alt="Code Climate"></a></p>
+<p><a href="http://travis-ci.org/ShogunPanda/elephas"><img src="https://secure.travis-ci.org/ShogunPanda/elephas.png?branch=master" alt="Build Status" /></a>
+<a href="https://gemnasium.com/ShogunPanda/elephas"><img src="https://gemnasium.com/ShogunPanda/elephas.png?travis" alt="Dependency Status" /></a>
+<a href="https://codeclimate.com/github/ShogunPanda/elephas"><img src="https://codeclimate.com/github/ShogunPanda/elephas.png" alt="Code Climate" /></a></p>
 
 <p>A storage agnostic caching framework.</p>
 
-<p><a href="http://sw.cow.tc/elephas">http://sw.cow.tc/elephas</a></p>
+<p>http://sw.cow.tc/elephas</p>
 
-<p><a href="http://rdoc.info/gems/elephas">http://rdoc.info/gems/elephas</a></p>
+<p>http://rdoc.info/gems/elephas</p>
 
-<h2>Usage</h2>
+<h2 id="usage">Usage</h2>
 
 <p>The usage of the framework is really simple.</p>
 
 <p>At first you have to setup a provider (that is, a storage) for the Elephas. By default it uses an internal hash, and also Rails is supported.</p>
 
-<pre class="code ruby"><code class="ruby"><span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Cache</span><span class='period'>.</span><span class='id identifier rubyid_provider'>provider</span> <span class='op'>=</span> <span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Providers</span><span class='op'>::</span><span class='const'>RubyOnRails</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
-</code></pre>
+<p><code>ruby
+Elephas::Cache.provider = Elephas::Providers::RubyOnRails.new
+</code></p>
 
 <p>After that, you can query the framework for a value use the <code>use</code> method.</p>
 
 <p>You should also pass a block to the method, so that the framework use that for computing the value of the cache entry.</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Cache</span><span class='period'>.</span><span class='id identifier rubyid_use'>use</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>KEY</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_options'>options</span><span class='op'>|</span>
-  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>VALUE</span><span class='tstring_end'>&quot;</span></span>
-<span class='kw'>end</span>
-<span class='comment'># =&gt; &quot;VALUE&quot;
-</span></code></pre>
+<p><code>ruby
+value = Elephas::Cache.use("KEY") do |options|
+  "VALUE"
+end
+# =&gt; "VALUE"
+</code></p>
 
-<p>The next time you issue this call, the block won&#39;t be called.</p>
+<p>The next time you issue this call, the block won&#8217;t be called.</p>
 
 <p>The block takes an argument, which contains all the options for the entry.</p>
 
@@ -102,29 +104,29 @@
 
 <p>See documentation for more informations.</p>
 
-<p><strong>You&#39;re done!</strong></p>
+<p><strong>You&#8217;re done!</strong></p>
 
-<h2>Contributing to elephas</h2>
+<h2 id="contributing-to-elephas">Contributing to elephas</h2>
 
 <ul>
-<li>Check out the latest master to make sure the feature hasn&#39;t been implemented or the bug hasn&#39;t been fixed yet.</li>
-<li>Check out the issue tracker to make sure someone already hasn&#39;t requested it and/or contributed it.</li>
-<li>Fork the project.</li>
-<li>Start a feature/bugfix branch.</li>
-<li>Commit and push until you are happy with your contribution.</li>
-<li>Make sure to add tests for it. This is important so I don&#39;t break it in a future version unintentionally.</li>
-<li>Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.</li>
+  <li>Check out the latest master to make sure the feature hasn&#8217;t been implemented or the bug hasn&#8217;t been fixed yet.</li>
+  <li>Check out the issue tracker to make sure someone already hasn&#8217;t requested it and/or contributed it.</li>
+  <li>Fork the project.</li>
+  <li>Start a feature/bugfix branch.</li>
+  <li>Commit and push until you are happy with your contribution.</li>
+  <li>Make sure to add tests for it. This is important so I don&#8217;t break it in a future version unintentionally.</li>
+  <li>Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.</li>
 </ul>
 
-<h2>Copyright</h2>
+<h2 id="copyright">Copyright</h2>
 
-<p>Copyright (C) 2013 and above Shogun (<a href="mailto:shogun_panda@me.com">shogun_panda@me.com</a>).</p>
+<p>Copyright (C) 2013 and above Shogun (shogun_panda@me.com).</p>
 
-<p>Licensed under the MIT license, which can be found at <a href="http://www.opensource.org/licenses/mit-license.php">http://www.opensource.org/licenses/mit-license.php</a>.</p>
+<p>Licensed under the MIT license, which can be found at http://www.opensource.org/licenses/mit-license.php.</p>
 </div></div>
 
     <div id="footer">
-  Generated on Thu Feb  7 08:33:46 2013 by
+  Generated on Thu Feb  7 17:49:24 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.4.1 (ruby-1.9.3).
 </div>

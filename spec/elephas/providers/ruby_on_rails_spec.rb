@@ -13,6 +13,7 @@ describe Elephas::Providers::RubyOnRails do
     end
 
     def write(key, value, options = {})
+      self.delete(key)
       self[key] = value
     end
 

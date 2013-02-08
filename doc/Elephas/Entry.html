@@ -655,7 +655,18 @@
 93
 94
 95
-96</pre>
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/elephas/entry.rb', line 20</span>
@@ -686,7 +697,7 @@
 </span>  <span class='comment'># @param save [Boolean] If to save the refresh value in the cache.
 </span>  <span class='comment'># @return [Float] The new updated_at value.
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_refresh'>refresh</span><span class='lparen'>(</span><span class='id identifier rubyid_save'>save</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
-    <span class='ivar'>@updated_at</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span>
+    <span class='ivar'>@updated_at</span> <span class='op'>=</span> <span class='id identifier rubyid_get_new_updated_at'>get_new_updated_at</span><span class='lparen'>(</span><span class='ivar'>@updated_at</span><span class='rparen'>)</span>
     <span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Cache</span><span class='period'>.</span><span class='id identifier rubyid_provider'>provider</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='ivar'>@hash</span><span class='comma'>,</span> <span class='kw'>self</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_save'>save</span>
     <span class='ivar'>@updated_at</span>
   <span class='kw'>end</span>
@@ -736,6 +747,17 @@
 
     <span class='id identifier rubyid_rv'>rv</span>
   <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_private'>private</span>
+    <span class='comment'># Makes sure a new updated at is generated.
+</span>    <span class='comment'>#
+</span>    <span class='comment'># @param initial [Float] Old value.
+</span>    <span class='comment'># @return [Float] New value.
+</span>    <span class='kw'>def</span> <span class='id identifier rubyid_get_new_updated_at'>get_new_updated_at</span><span class='lparen'>(</span><span class='id identifier rubyid_initial'>initial</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_rv'>rv</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span>
+      <span class='id identifier rubyid_rv'>rv</span> <span class='op'>+=</span> <span class='float'>1E6</span> <span class='kw'>if</span> <span class='id identifier rubyid_rv'>rv</span> <span class='op'>==</span> <span class='id identifier rubyid_initial'>initial</span>
+      <span class='id identifier rubyid_rv'>rv</span>
+    <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -862,7 +884,18 @@
 93
 94
 95
-96</pre>
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/elephas/entry.rb', line 20</span>
@@ -893,7 +926,7 @@
 </span>  <span class='comment'># @param save [Boolean] If to save the refresh value in the cache.
 </span>  <span class='comment'># @return [Float] The new updated_at value.
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_refresh'>refresh</span><span class='lparen'>(</span><span class='id identifier rubyid_save'>save</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
-    <span class='ivar'>@updated_at</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span>
+    <span class='ivar'>@updated_at</span> <span class='op'>=</span> <span class='id identifier rubyid_get_new_updated_at'>get_new_updated_at</span><span class='lparen'>(</span><span class='ivar'>@updated_at</span><span class='rparen'>)</span>
     <span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Cache</span><span class='period'>.</span><span class='id identifier rubyid_provider'>provider</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='ivar'>@hash</span><span class='comma'>,</span> <span class='kw'>self</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_save'>save</span>
     <span class='ivar'>@updated_at</span>
   <span class='kw'>end</span>
@@ -943,6 +976,17 @@
 
     <span class='id identifier rubyid_rv'>rv</span>
   <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_private'>private</span>
+    <span class='comment'># Makes sure a new updated at is generated.
+</span>    <span class='comment'>#
+</span>    <span class='comment'># @param initial [Float] Old value.
+</span>    <span class='comment'># @return [Float] New value.
+</span>    <span class='kw'>def</span> <span class='id identifier rubyid_get_new_updated_at'>get_new_updated_at</span><span class='lparen'>(</span><span class='id identifier rubyid_initial'>initial</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_rv'>rv</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span>
+      <span class='id identifier rubyid_rv'>rv</span> <span class='op'>+=</span> <span class='float'>1E6</span> <span class='kw'>if</span> <span class='id identifier rubyid_rv'>rv</span> <span class='op'>==</span> <span class='id identifier rubyid_initial'>initial</span>
+      <span class='id identifier rubyid_rv'>rv</span>
+    <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1069,7 +1113,18 @@
 93
 94
 95
-96</pre>
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/elephas/entry.rb', line 20</span>
@@ -1100,7 +1155,7 @@
 </span>  <span class='comment'># @param save [Boolean] If to save the refresh value in the cache.
 </span>  <span class='comment'># @return [Float] The new updated_at value.
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_refresh'>refresh</span><span class='lparen'>(</span><span class='id identifier rubyid_save'>save</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
-    <span class='ivar'>@updated_at</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span>
+    <span class='ivar'>@updated_at</span> <span class='op'>=</span> <span class='id identifier rubyid_get_new_updated_at'>get_new_updated_at</span><span class='lparen'>(</span><span class='ivar'>@updated_at</span><span class='rparen'>)</span>
     <span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Cache</span><span class='period'>.</span><span class='id identifier rubyid_provider'>provider</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='ivar'>@hash</span><span class='comma'>,</span> <span class='kw'>self</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_save'>save</span>
     <span class='ivar'>@updated_at</span>
   <span class='kw'>end</span>
@@ -1150,6 +1205,17 @@
 
     <span class='id identifier rubyid_rv'>rv</span>
   <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_private'>private</span>
+    <span class='comment'># Makes sure a new updated at is generated.
+</span>    <span class='comment'>#
+</span>    <span class='comment'># @param initial [Float] Old value.
+</span>    <span class='comment'># @return [Float] New value.
+</span>    <span class='kw'>def</span> <span class='id identifier rubyid_get_new_updated_at'>get_new_updated_at</span><span class='lparen'>(</span><span class='id identifier rubyid_initial'>initial</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_rv'>rv</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span>
+      <span class='id identifier rubyid_rv'>rv</span> <span class='op'>+=</span> <span class='float'>1E6</span> <span class='kw'>if</span> <span class='id identifier rubyid_rv'>rv</span> <span class='op'>==</span> <span class='id identifier rubyid_initial'>initial</span>
+      <span class='id identifier rubyid_rv'>rv</span>
+    <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1276,7 +1342,18 @@
 93
 94
 95
-96</pre>
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/elephas/entry.rb', line 20</span>
@@ -1307,7 +1384,7 @@
 </span>  <span class='comment'># @param save [Boolean] If to save the refresh value in the cache.
 </span>  <span class='comment'># @return [Float] The new updated_at value.
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_refresh'>refresh</span><span class='lparen'>(</span><span class='id identifier rubyid_save'>save</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
-    <span class='ivar'>@updated_at</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span>
+    <span class='ivar'>@updated_at</span> <span class='op'>=</span> <span class='id identifier rubyid_get_new_updated_at'>get_new_updated_at</span><span class='lparen'>(</span><span class='ivar'>@updated_at</span><span class='rparen'>)</span>
     <span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Cache</span><span class='period'>.</span><span class='id identifier rubyid_provider'>provider</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='ivar'>@hash</span><span class='comma'>,</span> <span class='kw'>self</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_save'>save</span>
     <span class='ivar'>@updated_at</span>
   <span class='kw'>end</span>
@@ -1357,6 +1434,17 @@
 
     <span class='id identifier rubyid_rv'>rv</span>
   <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_private'>private</span>
+    <span class='comment'># Makes sure a new updated at is generated.
+</span>    <span class='comment'>#
+</span>    <span class='comment'># @param initial [Float] Old value.
+</span>    <span class='comment'># @return [Float] New value.
+</span>    <span class='kw'>def</span> <span class='id identifier rubyid_get_new_updated_at'>get_new_updated_at</span><span class='lparen'>(</span><span class='id identifier rubyid_initial'>initial</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_rv'>rv</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span>
+      <span class='id identifier rubyid_rv'>rv</span> <span class='op'>+=</span> <span class='float'>1E6</span> <span class='kw'>if</span> <span class='id identifier rubyid_rv'>rv</span> <span class='op'>==</span> <span class='id identifier rubyid_initial'>initial</span>
+      <span class='id identifier rubyid_rv'>rv</span>
+    <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1483,7 +1571,18 @@
 93
 94
 95
-96</pre>
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/elephas/entry.rb', line 20</span>
@@ -1514,7 +1613,7 @@
 </span>  <span class='comment'># @param save [Boolean] If to save the refresh value in the cache.
 </span>  <span class='comment'># @return [Float] The new updated_at value.
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_refresh'>refresh</span><span class='lparen'>(</span><span class='id identifier rubyid_save'>save</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
-    <span class='ivar'>@updated_at</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span>
+    <span class='ivar'>@updated_at</span> <span class='op'>=</span> <span class='id identifier rubyid_get_new_updated_at'>get_new_updated_at</span><span class='lparen'>(</span><span class='ivar'>@updated_at</span><span class='rparen'>)</span>
     <span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Cache</span><span class='period'>.</span><span class='id identifier rubyid_provider'>provider</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='ivar'>@hash</span><span class='comma'>,</span> <span class='kw'>self</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_save'>save</span>
     <span class='ivar'>@updated_at</span>
   <span class='kw'>end</span>
@@ -1564,6 +1663,17 @@
 
     <span class='id identifier rubyid_rv'>rv</span>
   <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_private'>private</span>
+    <span class='comment'># Makes sure a new updated at is generated.
+</span>    <span class='comment'>#
+</span>    <span class='comment'># @param initial [Float] Old value.
+</span>    <span class='comment'># @return [Float] New value.
+</span>    <span class='kw'>def</span> <span class='id identifier rubyid_get_new_updated_at'>get_new_updated_at</span><span class='lparen'>(</span><span class='id identifier rubyid_initial'>initial</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_rv'>rv</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span>
+      <span class='id identifier rubyid_rv'>rv</span> <span class='op'>+=</span> <span class='float'>1E6</span> <span class='kw'>if</span> <span class='id identifier rubyid_rv'>rv</span> <span class='op'>==</span> <span class='id identifier rubyid_initial'>initial</span>
+      <span class='id identifier rubyid_rv'>rv</span>
+    <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1938,7 +2048,7 @@
       <pre class="code"><span class="info file"># File 'lib/elephas/entry.rb', line 45</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_refresh'>refresh</span><span class='lparen'>(</span><span class='id identifier rubyid_save'>save</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
-  <span class='ivar'>@updated_at</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span>
+  <span class='ivar'>@updated_at</span> <span class='op'>=</span> <span class='id identifier rubyid_get_new_updated_at'>get_new_updated_at</span><span class='lparen'>(</span><span class='ivar'>@updated_at</span><span class='rparen'>)</span>
   <span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Cache</span><span class='period'>.</span><span class='id identifier rubyid_provider'>provider</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='ivar'>@hash</span><span class='comma'>,</span> <span class='kw'>self</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_save'>save</span>
   <span class='ivar'>@updated_at</span>
 <span class='kw'>end</span></pre>
@@ -2032,7 +2142,7 @@
 </div>
 
     <div id="footer">
-  Generated on Thu Feb  7 08:33:46 2013 by
+  Generated on Thu Feb  7 17:49:25 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.4.1 (ruby-1.9.3).
 </div>
