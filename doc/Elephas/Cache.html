@@ -1,0 +1,1850 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Elephas::Cache
+  
+    &mdash; Documentation by YARD 0.8.5.2
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (C)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../Elephas.html" title="Elephas (module)">Elephas</a></span></span>
+     &raquo; 
+    <span class="title">Cache</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Elephas::Cache
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Elephas::Cache</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/elephas/cache.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>This is the main class of the framework. Use only this class to access the cache.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#backend-instance_method" title="#backend (instance method)">- (Backend) <strong>backend</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The backend used for the caching.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#prefix-instance_method" title="#prefix (instance method)">- (String) <strong>prefix</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The default prefix for cache entries.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#delete-instance_method" title="#delete (instance method)">- (Boolean) <strong>delete</strong>(key, backend = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Deletes a value from the cache.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#exists%3F-instance_method" title="#exists? (instance method)">- (Boolean) <strong>exists?</strong>(key, backend = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks if a key exists in the cache.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Cache) <strong>initialize</strong>(backend = nil) </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Initialize the cache.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read-instance_method" title="#read (instance method)">- (Object|NilClass) <strong>read</strong>(key, backend = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Reads a value from the cache.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#setup_options-instance_method" title="#setup_options (instance method)">- (Hash) <strong>setup_options</strong>(options, key) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Setups options for use into the framework.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#use-instance_method" title="#use (instance method)">- (Object|Entry) <strong>use</strong>(key, options = {}, &amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>This is the main method of the framework.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#write-instance_method" title="#write (instance method)">- (Object) <strong>write</strong>(key, value, options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Writes a value to the cache.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Elephas::Cache (class)">Cache</a></span></tt>) <strong>initialize</strong>(backend = nil) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Initialize the cache.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>backend</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Backends/Base.html" title="Elephas::Backends::Base (class)">Backends::Base</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The backend to use. By default uses an Hash backend.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+21
+22
+23
+24</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/elephas/cache.rb', line 21</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_backend'>backend</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='ivar'>@backend</span> <span class='op'>=</span> <span class='id identifier rubyid_backend'>backend</span> <span class='op'>||</span> <span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Backends</span><span class='op'>::</span><span class='const'>Hash</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='ivar'>@prefix</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>elephas-</span><span class='embexpr_beg'>#{</span><span class='op'>::</span><span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Version</span><span class='op'>::</span><span class='const'>STRING</span><span class='rbrace'>}</span><span class='tstring_content'>-cache</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="backend=-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="backend-instance_method">
+  
+    - (<tt>Backend</tt>) <strong>backend</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The backend used for the caching.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Backend</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The backend used for the caching.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/elephas/cache.rb', line 14</span>
+
+<span class='kw'>class</span> <span class='const'>Cache</span>
+  <span class='id identifier rubyid_attr_accessor'>attr_accessor</span> <span class='symbol'>:backend</span>
+  <span class='id identifier rubyid_attr_accessor'>attr_accessor</span> <span class='symbol'>:prefix</span>
+
+  <span class='comment'># Initialize the cache.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param backend [Backends::Base] The backend to use. By default uses an Hash backend.
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_backend'>backend</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+    <span class='ivar'>@backend</span> <span class='op'>=</span> <span class='id identifier rubyid_backend'>backend</span> <span class='op'>||</span> <span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Backends</span><span class='op'>::</span><span class='const'>Hash</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+    <span class='ivar'>@prefix</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>elephas-</span><span class='embexpr_beg'>#{</span><span class='op'>::</span><span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Version</span><span class='op'>::</span><span class='const'>STRING</span><span class='rbrace'>}</span><span class='tstring_content'>-cache</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># This is the main method of the framework.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># It tries reading a key from the cache.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># If it doesn't find it, it uses the provided block (which receives options as argument) to compute its value and then store it into the cache for later usages.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ```ruby
+</span>  <span class='comment'># cache = Elephas::Cache.new(Elephas::Backends::Hash.new)
+</span>  <span class='comment'>#
+</span>  <span class='comment'># value = cache.use(&quot;KEY&quot;) do |options|
+</span>  <span class='comment'>#   &quot;VALUE&quot;
+</span>  <span class='comment'># end
+</span>  <span class='comment'>#
+</span>  <span class='comment'># value
+</span>  <span class='comment'># # =&gt; &quot;VALUE&quot;
+</span>  <span class='comment'>#
+</span>  <span class='comment'># value = cache.use(&quot;KEY&quot;) do |options|
+</span>  <span class='comment'>#   &quot;ANOTHER VALUE&quot;
+</span>  <span class='comment'># end
+</span>  <span class='comment'>#
+</span>  <span class='comment'># value
+</span>  <span class='comment'># # =&gt; &quot;VALUE&quot;
+</span>  <span class='comment'># ```
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param key [String] The key to lookup.
+</span>  <span class='comment'># @param options [Hash] A list of options for managing this key.
+</span>  <span class='comment'># @param block [Proc] An optional block to run to compute the value for the key if nothing is found.
+</span>  <span class='comment'># @return [Object|Entry] The found or newly-set value associated to the key.
+</span>  <span class='comment'># @see .setup_options
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_use'>use</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_rv'>rv</span> <span class='op'>=</span> <span class='kw'>nil</span>
+
+    <span class='comment'># Get options
+</span>    <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_setup_options'>setup_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+
+    <span class='comment'># Check if the storage has the value (if we don't have to skip the cache)
+</span>    <span class='id identifier rubyid_rv'>rv</span> <span class='op'>=</span> <span class='id identifier rubyid_choose_backend'>choose_backend</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:hash</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:force</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='kw'>false</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:ttl</span><span class='rbracket'>]</span> <span class='op'>&gt;</span> <span class='int'>0</span>
+    <span class='id identifier rubyid_rv'>rv</span> <span class='op'>=</span> <span class='id identifier rubyid_compute_value'>compute_value</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_rv'>rv</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_block'>block</span> <span class='comment'># Try to compute the value from the block
+</span>
+    <span class='comment'># Return value
+</span>    <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:as_entry</span><span class='rbracket'>]</span> <span class='op'>?</span> <span class='id identifier rubyid_rv'>rv</span> <span class='op'>:</span> <span class='id identifier rubyid_rv'>rv</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># Reads a value from the cache.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param key [String] The key to lookup.
+</span>  <span class='comment'># @param backend [Backends::Base|NilClass] The backend to use. Defaults to the current backend.
+</span>  <span class='comment'># @return [Object|NilClass] The read value or `nil`.
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_backend'>backend</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_choose_backend'>choose_backend</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='label'>backend:</span> <span class='id identifier rubyid_backend'>backend</span><span class='rbrace'>}</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># Writes a value to the cache.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param key [String] The key to associate the value with.
+</span>  <span class='comment'># @param value [Object] The value to write. Setting a value to `nil` **doesn't** mean *deleting* the value.
+</span>  <span class='comment'># @param options [Hash] A list of options for writing.
+</span>  <span class='comment'># @see .setup_options
+</span>  <span class='comment'># @return [Object] The value itself.
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_choose_backend'>choose_backend</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_setup_options'>setup_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># Deletes a value from the cache.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param key [String] The key to delete.
+</span>  <span class='comment'># @param backend [Backends::Base|NilClass] The backend to use. Defaults to the current backend.
+</span>  <span class='comment'># @return [Boolean] `true` if the key was in the cache, `false` otherwise.
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_backend'>backend</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_choose_backend'>choose_backend</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='label'>backend:</span> <span class='id identifier rubyid_backend'>backend</span><span class='rbrace'>}</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># Checks if a key exists in the cache.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param key [String] The key to lookup.
+</span>  <span class='comment'># @param backend [Backends::Base|NilClass] The backend to use. Defaults to the current backend.
+</span>  <span class='comment'># @return [Boolean] `true` if the key is in the cache, `false` otherwise.
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_backend'>backend</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_choose_backend'>choose_backend</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='label'>backend:</span> <span class='id identifier rubyid_backend'>backend</span><span class='rbrace'>}</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># Setups options for use into the framework.
+</span>  <span class='comment'># Valid options are:
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#   * **:ttl**: The TTL (time to live, in milliseconds) of the entry. It means how long will the value stay in cache. Setting it to 0 or less means never cache the entry.
+</span>  <span class='comment'>#   * **:force**: Setting it to `true` will always skip the cache.
+</span>  <span class='comment'>#   * **:key**: The key associated to this value. **You should never set this option directly.**
+</span>  <span class='comment'>#   * **:prefix**: The prefix used in cache. This is used to avoid conflicts with other caching frameworks.
+</span>  <span class='comment'>#   * **:complete_key**: The complete key used for computing the hash. By default is concatenation of `:key` and `:prefix` options.
+</span>  <span class='comment'>#   * **:hash**: The hash used to store the key in the cache. Should be unique
+</span>  <span class='comment'>#   * **:as_entry**: In `Elephas::Cache.use`, setting this to `true` will return the entire `Entry` object rather than the value only.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param options [Object] An initial setup.
+</span>  <span class='comment'># @param key [String] The key to associate to this options.
+</span>  <span class='comment'># @return [Hash] An options hash.
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_setup_options'>setup_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span> <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'>Hash</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='label'>ttl:</span> <span class='int'>1</span><span class='period'>.</span><span class='id identifier rubyid_hour'>hour</span> <span class='op'>*</span> <span class='int'>1000</span><span class='comma'>,</span> <span class='label'>force:</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='label'>as_entry:</span> <span class='kw'>false</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+
+    <span class='comment'># Sanitize options.
+</span>    <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_sanitize_options'>sanitize_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+
+    <span class='comment'># Wrap the final key to ensure we don't have colliding namespaces.
+</span>    <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:complete_key</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:prefix</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_content'>[</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:key</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_content'>]</span><span class='tstring_end'>&quot;</span></span>
+
+    <span class='comment'># Compute the hash key used for referencing this value.
+</span>    <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:hash</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='op'>::</span><span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Entry</span><span class='period'>.</span><span class='id identifier rubyid_hashify_key'>hashify_key</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:complete_key</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+
+    <span class='id identifier rubyid_options'>options</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_private'>private</span>
+    <span class='comment'># Computes a new value and saves it to the cache.
+</span>    <span class='comment'>#
+</span>    <span class='comment'># @param options [Hash] A list of options for managing the value.
+</span>    <span class='comment'># @param block [Proc] The block to run to compute the value.
+</span>    <span class='comment'># @return [Object|Entry] The new value.
+</span>    <span class='kw'>def</span> <span class='id identifier rubyid_compute_value'>compute_value</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_rv'>rv</span> <span class='op'>=</span> <span class='id identifier rubyid_block'>block</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_rv'>rv</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Entry</span><span class='period'>.</span><span class='id identifier rubyid_ensure'>ensure</span><span class='lparen'>(</span><span class='id identifier rubyid_rv'>rv</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:complete_key</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span> <span class='comment'># Make sure is an entry
+</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_rv'>rv</span><span class='period'>.</span><span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='id identifier rubyid_rv'>rv</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_rv'>rv</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:ttl</span><span class='rbracket'>]</span> <span class='op'>&gt;</span> <span class='int'>0</span> <span class='comment'># We have a value and we have to store it
+</span>      <span class='id identifier rubyid_rv'>rv</span>
+    <span class='kw'>end</span>
+
+    <span class='comment'># Sanitizes options for safe usage.
+</span>    <span class='comment'>#
+</span>    <span class='comment'># @param options [Object] An initial setup.
+</span>    <span class='comment'># @param key [String] The key to associate to this options.
+</span>    <span class='comment'># @return [Hash] An options hash.
+</span>    <span class='kw'>def</span> <span class='id identifier rubyid_sanitize_options'>sanitize_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:key</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_ensure_string'>ensure_string</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:ttl</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:ttl</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span> <span class='op'>?</span> <span class='int'>1</span><span class='period'>.</span><span class='id identifier rubyid_hour'>hour</span> <span class='op'>*</span> <span class='int'>1000</span> <span class='op'>:</span> <span class='lbracket'>[</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:ttl</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_integer'>to_integer</span><span class='comma'>,</span> <span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_max'>max</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:force</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:force</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_boolean'>to_boolean</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:prefix</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:prefix</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_present?'>present?</span> <span class='op'>?</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:prefix</span><span class='rbracket'>]</span> <span class='op'>:</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_prefix'>prefix</span>
+      <span class='id identifier rubyid_options'>options</span>
+    <span class='kw'>end</span>
+
+    <span class='comment'># Choose a backend to use.
+</span>    <span class='comment'>#
+</span>    <span class='comment'># @param options [Backends::Base|Hash] The backend to use. Defaults to the current backend.
+</span>    <span class='kw'>def</span> <span class='id identifier rubyid_choose_backend'>choose_backend</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_backend'>backend</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Hash</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_symbolize_keys'>symbolize_keys</span><span class='lbracket'>[</span><span class='symbol'>:backend</span><span class='rbracket'>]</span> <span class='op'>:</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_backend'>backend</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Backends</span><span class='op'>::</span><span class='const'>Base</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_backend'>backend</span> <span class='op'>:</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_backend'>backend</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="prefix=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="prefix-instance_method">
+  
+    - (<tt>String</tt>) <strong>prefix</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The default prefix for cache entries.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The default prefix for cache entries.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/elephas/cache.rb', line 14</span>
+
+<span class='kw'>class</span> <span class='const'>Cache</span>
+  <span class='id identifier rubyid_attr_accessor'>attr_accessor</span> <span class='symbol'>:backend</span>
+  <span class='id identifier rubyid_attr_accessor'>attr_accessor</span> <span class='symbol'>:prefix</span>
+
+  <span class='comment'># Initialize the cache.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param backend [Backends::Base] The backend to use. By default uses an Hash backend.
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_backend'>backend</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+    <span class='ivar'>@backend</span> <span class='op'>=</span> <span class='id identifier rubyid_backend'>backend</span> <span class='op'>||</span> <span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Backends</span><span class='op'>::</span><span class='const'>Hash</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+    <span class='ivar'>@prefix</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>elephas-</span><span class='embexpr_beg'>#{</span><span class='op'>::</span><span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Version</span><span class='op'>::</span><span class='const'>STRING</span><span class='rbrace'>}</span><span class='tstring_content'>-cache</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># This is the main method of the framework.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># It tries reading a key from the cache.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># If it doesn't find it, it uses the provided block (which receives options as argument) to compute its value and then store it into the cache for later usages.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ```ruby
+</span>  <span class='comment'># cache = Elephas::Cache.new(Elephas::Backends::Hash.new)
+</span>  <span class='comment'>#
+</span>  <span class='comment'># value = cache.use(&quot;KEY&quot;) do |options|
+</span>  <span class='comment'>#   &quot;VALUE&quot;
+</span>  <span class='comment'># end
+</span>  <span class='comment'>#
+</span>  <span class='comment'># value
+</span>  <span class='comment'># # =&gt; &quot;VALUE&quot;
+</span>  <span class='comment'>#
+</span>  <span class='comment'># value = cache.use(&quot;KEY&quot;) do |options|
+</span>  <span class='comment'>#   &quot;ANOTHER VALUE&quot;
+</span>  <span class='comment'># end
+</span>  <span class='comment'>#
+</span>  <span class='comment'># value
+</span>  <span class='comment'># # =&gt; &quot;VALUE&quot;
+</span>  <span class='comment'># ```
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param key [String] The key to lookup.
+</span>  <span class='comment'># @param options [Hash] A list of options for managing this key.
+</span>  <span class='comment'># @param block [Proc] An optional block to run to compute the value for the key if nothing is found.
+</span>  <span class='comment'># @return [Object|Entry] The found or newly-set value associated to the key.
+</span>  <span class='comment'># @see .setup_options
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_use'>use</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_rv'>rv</span> <span class='op'>=</span> <span class='kw'>nil</span>
+
+    <span class='comment'># Get options
+</span>    <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_setup_options'>setup_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+
+    <span class='comment'># Check if the storage has the value (if we don't have to skip the cache)
+</span>    <span class='id identifier rubyid_rv'>rv</span> <span class='op'>=</span> <span class='id identifier rubyid_choose_backend'>choose_backend</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:hash</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:force</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='kw'>false</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:ttl</span><span class='rbracket'>]</span> <span class='op'>&gt;</span> <span class='int'>0</span>
+    <span class='id identifier rubyid_rv'>rv</span> <span class='op'>=</span> <span class='id identifier rubyid_compute_value'>compute_value</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_rv'>rv</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_block'>block</span> <span class='comment'># Try to compute the value from the block
+</span>
+    <span class='comment'># Return value
+</span>    <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:as_entry</span><span class='rbracket'>]</span> <span class='op'>?</span> <span class='id identifier rubyid_rv'>rv</span> <span class='op'>:</span> <span class='id identifier rubyid_rv'>rv</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># Reads a value from the cache.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param key [String] The key to lookup.
+</span>  <span class='comment'># @param backend [Backends::Base|NilClass] The backend to use. Defaults to the current backend.
+</span>  <span class='comment'># @return [Object|NilClass] The read value or `nil`.
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_backend'>backend</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_choose_backend'>choose_backend</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='label'>backend:</span> <span class='id identifier rubyid_backend'>backend</span><span class='rbrace'>}</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># Writes a value to the cache.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param key [String] The key to associate the value with.
+</span>  <span class='comment'># @param value [Object] The value to write. Setting a value to `nil` **doesn't** mean *deleting* the value.
+</span>  <span class='comment'># @param options [Hash] A list of options for writing.
+</span>  <span class='comment'># @see .setup_options
+</span>  <span class='comment'># @return [Object] The value itself.
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_choose_backend'>choose_backend</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_setup_options'>setup_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># Deletes a value from the cache.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param key [String] The key to delete.
+</span>  <span class='comment'># @param backend [Backends::Base|NilClass] The backend to use. Defaults to the current backend.
+</span>  <span class='comment'># @return [Boolean] `true` if the key was in the cache, `false` otherwise.
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_backend'>backend</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_choose_backend'>choose_backend</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='label'>backend:</span> <span class='id identifier rubyid_backend'>backend</span><span class='rbrace'>}</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># Checks if a key exists in the cache.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param key [String] The key to lookup.
+</span>  <span class='comment'># @param backend [Backends::Base|NilClass] The backend to use. Defaults to the current backend.
+</span>  <span class='comment'># @return [Boolean] `true` if the key is in the cache, `false` otherwise.
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_backend'>backend</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_choose_backend'>choose_backend</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='label'>backend:</span> <span class='id identifier rubyid_backend'>backend</span><span class='rbrace'>}</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># Setups options for use into the framework.
+</span>  <span class='comment'># Valid options are:
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#   * **:ttl**: The TTL (time to live, in milliseconds) of the entry. It means how long will the value stay in cache. Setting it to 0 or less means never cache the entry.
+</span>  <span class='comment'>#   * **:force**: Setting it to `true` will always skip the cache.
+</span>  <span class='comment'>#   * **:key**: The key associated to this value. **You should never set this option directly.**
+</span>  <span class='comment'>#   * **:prefix**: The prefix used in cache. This is used to avoid conflicts with other caching frameworks.
+</span>  <span class='comment'>#   * **:complete_key**: The complete key used for computing the hash. By default is concatenation of `:key` and `:prefix` options.
+</span>  <span class='comment'>#   * **:hash**: The hash used to store the key in the cache. Should be unique
+</span>  <span class='comment'>#   * **:as_entry**: In `Elephas::Cache.use`, setting this to `true` will return the entire `Entry` object rather than the value only.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param options [Object] An initial setup.
+</span>  <span class='comment'># @param key [String] The key to associate to this options.
+</span>  <span class='comment'># @return [Hash] An options hash.
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_setup_options'>setup_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span> <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'>Hash</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='label'>ttl:</span> <span class='int'>1</span><span class='period'>.</span><span class='id identifier rubyid_hour'>hour</span> <span class='op'>*</span> <span class='int'>1000</span><span class='comma'>,</span> <span class='label'>force:</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='label'>as_entry:</span> <span class='kw'>false</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+
+    <span class='comment'># Sanitize options.
+</span>    <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_sanitize_options'>sanitize_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+
+    <span class='comment'># Wrap the final key to ensure we don't have colliding namespaces.
+</span>    <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:complete_key</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:prefix</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_content'>[</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:key</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_content'>]</span><span class='tstring_end'>&quot;</span></span>
+
+    <span class='comment'># Compute the hash key used for referencing this value.
+</span>    <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:hash</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='op'>::</span><span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Entry</span><span class='period'>.</span><span class='id identifier rubyid_hashify_key'>hashify_key</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:complete_key</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+
+    <span class='id identifier rubyid_options'>options</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_private'>private</span>
+    <span class='comment'># Computes a new value and saves it to the cache.
+</span>    <span class='comment'>#
+</span>    <span class='comment'># @param options [Hash] A list of options for managing the value.
+</span>    <span class='comment'># @param block [Proc] The block to run to compute the value.
+</span>    <span class='comment'># @return [Object|Entry] The new value.
+</span>    <span class='kw'>def</span> <span class='id identifier rubyid_compute_value'>compute_value</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_rv'>rv</span> <span class='op'>=</span> <span class='id identifier rubyid_block'>block</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_rv'>rv</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Entry</span><span class='period'>.</span><span class='id identifier rubyid_ensure'>ensure</span><span class='lparen'>(</span><span class='id identifier rubyid_rv'>rv</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:complete_key</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span> <span class='comment'># Make sure is an entry
+</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_rv'>rv</span><span class='period'>.</span><span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='id identifier rubyid_rv'>rv</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_rv'>rv</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:ttl</span><span class='rbracket'>]</span> <span class='op'>&gt;</span> <span class='int'>0</span> <span class='comment'># We have a value and we have to store it
+</span>      <span class='id identifier rubyid_rv'>rv</span>
+    <span class='kw'>end</span>
+
+    <span class='comment'># Sanitizes options for safe usage.
+</span>    <span class='comment'>#
+</span>    <span class='comment'># @param options [Object] An initial setup.
+</span>    <span class='comment'># @param key [String] The key to associate to this options.
+</span>    <span class='comment'># @return [Hash] An options hash.
+</span>    <span class='kw'>def</span> <span class='id identifier rubyid_sanitize_options'>sanitize_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:key</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_ensure_string'>ensure_string</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:ttl</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:ttl</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span> <span class='op'>?</span> <span class='int'>1</span><span class='period'>.</span><span class='id identifier rubyid_hour'>hour</span> <span class='op'>*</span> <span class='int'>1000</span> <span class='op'>:</span> <span class='lbracket'>[</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:ttl</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_integer'>to_integer</span><span class='comma'>,</span> <span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_max'>max</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:force</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:force</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_boolean'>to_boolean</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:prefix</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:prefix</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_present?'>present?</span> <span class='op'>?</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:prefix</span><span class='rbracket'>]</span> <span class='op'>:</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_prefix'>prefix</span>
+      <span class='id identifier rubyid_options'>options</span>
+    <span class='kw'>end</span>
+
+    <span class='comment'># Choose a backend to use.
+</span>    <span class='comment'>#
+</span>    <span class='comment'># @param options [Backends::Base|Hash] The backend to use. Defaults to the current backend.
+</span>    <span class='kw'>def</span> <span class='id identifier rubyid_choose_backend'>choose_backend</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_backend'>backend</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Hash</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_symbolize_keys'>symbolize_keys</span><span class='lbracket'>[</span><span class='symbol'>:backend</span><span class='rbracket'>]</span> <span class='op'>:</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_backend'>backend</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Backends</span><span class='op'>::</span><span class='const'>Base</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_backend'>backend</span> <span class='op'>:</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_backend'>backend</span>
+    <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="delete-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>delete</strong>(key, backend = nil) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Deletes a value from the cache.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>key</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The key to delete.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>backend</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Backends/Base.html" title="Elephas::Backends::Base (class)">Backends::Base</a></span>|NilClass</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The backend to use. Defaults to the current backend.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p><code>true</code> if the key was in the cache, <code>false</code> otherwise.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+94
+95
+96</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/elephas/cache.rb', line 94</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_backend'>backend</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_choose_backend'>choose_backend</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='label'>backend:</span> <span class='id identifier rubyid_backend'>backend</span><span class='rbrace'>}</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="exists?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>exists?</strong>(key, backend = nil) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks if a key exists in the cache.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>key</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The key to lookup.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>backend</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Backends/Base.html" title="Elephas::Backends::Base (class)">Backends::Base</a></span>|NilClass</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The backend to use. Defaults to the current backend.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p><code>true</code> if the key is in the cache, <code>false</code> otherwise.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+103
+104
+105</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/elephas/cache.rb', line 103</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_backend'>backend</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_choose_backend'>choose_backend</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='label'>backend:</span> <span class='id identifier rubyid_backend'>backend</span><span class='rbrace'>}</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="read-instance_method">
+  
+    - (<tt>Object|NilClass</tt>) <strong>read</strong>(key, backend = nil) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Reads a value from the cache.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>key</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The key to lookup.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>backend</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Backends/Base.html" title="Elephas::Backends::Base (class)">Backends::Base</a></span>|NilClass</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The backend to use. Defaults to the current backend.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Object|NilClass</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The read value or <code>nil</code>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+74
+75
+76</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/elephas/cache.rb', line 74</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_backend'>backend</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_choose_backend'>choose_backend</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='label'>backend:</span> <span class='id identifier rubyid_backend'>backend</span><span class='rbrace'>}</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="setup_options-instance_method">
+  
+    - (<tt>Hash</tt>) <strong>setup_options</strong>(options, key) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Setups options for use into the framework.
+Valid options are:</p>
+
+<ul>
+  <li><strong>:ttl</strong>: The TTL (time to live, in milliseconds) of the entry. It means how long will the value stay in cache. Setting it to 0 or less means never cache the entry.</li>
+  <li><strong>:force</strong>: Setting it to <code>true</code> will always skip the cache.</li>
+  <li><strong>:key</strong>: The key associated to this value. <strong>You should never set this option directly.</strong></li>
+  <li><strong>:prefix</strong>: The prefix used in cache. This is used to avoid conflicts with other caching frameworks.</li>
+  <li><strong>:complete_key</strong>: The complete key used for computing the hash. By default is concatenation of <code>:key</code> and <code>:prefix</code> options.</li>
+  <li><strong>:hash</strong>: The hash used to store the key in the cache. Should be unique</li>
+  <li><strong>:as_entry</strong>: In <code>Elephas::Cache.use</code>, setting this to <code>true</code> will return the entire <code>Entry</code> object rather than the value only.</li>
+</ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>An initial setup.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>key</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The key to associate to this options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>An options hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/elephas/cache.rb', line 121</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_setup_options'>setup_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span> <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'>Hash</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='label'>ttl:</span> <span class='int'>1</span><span class='period'>.</span><span class='id identifier rubyid_hour'>hour</span> <span class='op'>*</span> <span class='int'>1000</span><span class='comma'>,</span> <span class='label'>force:</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='label'>as_entry:</span> <span class='kw'>false</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+
+  <span class='comment'># Sanitize options.
+</span>  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_sanitize_options'>sanitize_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+
+  <span class='comment'># Wrap the final key to ensure we don't have colliding namespaces.
+</span>  <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:complete_key</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:prefix</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_content'>[</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:key</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_content'>]</span><span class='tstring_end'>&quot;</span></span>
+
+  <span class='comment'># Compute the hash key used for referencing this value.
+</span>  <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:hash</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='op'>::</span><span class='const'>Elephas</span><span class='op'>::</span><span class='const'>Entry</span><span class='period'>.</span><span class='id identifier rubyid_hashify_key'>hashify_key</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:complete_key</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_options'>options</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="use-instance_method">
+  
+    - (<tt>Object|<span class='object_link'><a href="Entry.html" title="Elephas::Entry (class)">Entry</a></span></tt>) <strong>use</strong>(key, options = {}, &amp;block) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>This is the main method of the framework.</p>
+
+<p>It tries reading a key from the cache.</p>
+
+<p>If it doesn&#8217;t find it, it uses the provided block (which receives options as argument) to compute its value and then store it into the cache for later usages.</p>
+
+<p>```ruby
+cache = Elephas::Cache.new(Elephas::Backends::Hash.new)</p>
+
+<p>value = cache.use(&#8220;KEY&#8221;) do |options|
+  &#8220;VALUE&#8221;
+end</p>
+
+<p>value
+# =&gt; &#8220;VALUE&#8221;</p>
+
+<p>value = cache.use(&#8220;KEY&#8221;) do |options|
+  &#8220;ANOTHER VALUE&#8221;
+end</p>
+
+<p>value
+# =&gt; &#8220;VALUE&#8221;
+```</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>key</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The key to lookup.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>A list of options for managing this key.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>block</span>
+      
+      
+        <span class='type'>(<tt>Proc</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>An optional block to run to compute the value for the key if nothing is found.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Object|<span class='object_link'><a href="Entry.html" title="Elephas::Entry (class)">Entry</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The found or newly-set value associated to the key.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li>setup_options</li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/elephas/cache.rb', line 55</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_use'>use</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_rv'>rv</span> <span class='op'>=</span> <span class='kw'>nil</span>
+
+  <span class='comment'># Get options
+</span>  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_setup_options'>setup_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+
+  <span class='comment'># Check if the storage has the value (if we don't have to skip the cache)
+</span>  <span class='id identifier rubyid_rv'>rv</span> <span class='op'>=</span> <span class='id identifier rubyid_choose_backend'>choose_backend</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:hash</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:force</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='kw'>false</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:ttl</span><span class='rbracket'>]</span> <span class='op'>&gt;</span> <span class='int'>0</span>
+  <span class='id identifier rubyid_rv'>rv</span> <span class='op'>=</span> <span class='id identifier rubyid_compute_value'>compute_value</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_rv'>rv</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_block'>block</span> <span class='comment'># Try to compute the value from the block
+</span>
+  <span class='comment'># Return value
+</span>  <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:as_entry</span><span class='rbracket'>]</span> <span class='op'>?</span> <span class='id identifier rubyid_rv'>rv</span> <span class='op'>:</span> <span class='id identifier rubyid_rv'>rv</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="write-instance_method">
+  
+    - (<tt>Object</tt>) <strong>write</strong>(key, value, options = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Writes a value to the cache.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>key</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The key to associate the value with.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>value</span>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The value to write. Setting a value to <code>nil</code> <strong>doesn’t</strong> mean <em>deleting</em> the value.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>A list of options for writing.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The value itself.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li>setup_options</li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+85
+86
+87</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/elephas/cache.rb', line 85</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_choose_backend'>choose_backend</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_setup_options'>setup_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Sun Mar 24 12:12:02 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.5.2 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>
