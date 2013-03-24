@@ -7,6 +7,7 @@
 require "spec_helper"
 
 describe Elephas::Entry do
+  let(:backend) { ::Elephas::Backends::Hash.new }
   subject { ::Elephas::Entry.new("KEY", "VALUE") }
 
   describe "#initialize" do
@@ -41,9 +42,9 @@ describe Elephas::Entry do
     end
 
     it "should save to the cache" do
-      expect(::Elephas::Cache.provider.read(subject.hash)).not_to eq(subject)
-      subject.refresh(true)
-      expect(::Elephas::Cache.provider.read(subject.hash)).to eq(subject)
+      expect(backend.read(subject.hash)).not_to eq(subject)
+      subject.refresh(true, backend)
+      expect(backend.read(subject.hash)).to eq(subject)
     end
   end
 
@@ -54,13 +55,13 @@ describe Elephas::Entry do
 
     it "should return true if the ttl is still valid" do
       ::Time.stub(:now).and_return(1000)
-      expect(subject.valid?).to be_true
+      expect(subject.valid?(backend)).to be_true
     end
 
     it "should return true if the ttl has expired" do
       ::Time.stub(:now).and_return(10000)
       subject.updated_at = 1000
-      expect(subject.valid?).to be_false
+      expect(subject.valid?(backend)).to be_false
     end
   end
 

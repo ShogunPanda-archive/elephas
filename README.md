@@ -15,10 +15,10 @@ http://rdoc.info/gems/elephas
 
 The usage of the framework is really simple.
 
-At first you have to setup a provider (that is, a storage) for the Elephas. By default it uses an internal hash, and also Rails is supported.
+At first you have to setup a cache object with a backend (that is, a storage) for the Elephas. By default it uses an internal hash, and also Rails is supported.
 
 ```ruby
-Elephas::Cache.provider = Elephas::Providers::RubyOnRails.new
+cache = Elephas::Cache.new(Elephas::Backends::RubyOnRails.new)
 ```
 
 After that, you can query the framework for a value use the `use` method.
@@ -26,7 +26,7 @@ After that, you can query the framework for a value use the `use` method.
 You should also pass a block to the method, so that the framework use that for computing the value of the cache entry.
 
 ```ruby
-value = Elephas::Cache.use("KEY") do |options|
+value = cache.use("KEY") do |options|
   "VALUE"
 end
 # => "VALUE"
@@ -36,7 +36,7 @@ The next time you issue this call, the block won't be called.
 
 The block takes an argument, which contains all the options for the entry.
 
-You can see ``Elephas::Cache.setup_options`` documentation to see what options are supported.
+You can see ``Elephas::Cache#setup_options`` documentation to see what options are supported.
 
 For now, you just have to know that you can set the ```:ttl``` option to specify how long the value will stay in the cache (in milliseconds). Setting it to a non-positive value means to never cache the value.
 

@@ -6,12 +6,8 @@
 
 require "spec_helper"
 
-describe Elephas::Providers::Base do
-  class BaseProvider
-    include Elephas::Providers::Base
-  end
-
-  let(:provider) { BaseProvider.new }
+describe Elephas::Backends::Base do
+  let(:provider) { Elephas::Backends::Base.new }
 
   describe ".read" do
     it "should raise an ArgumentError exception" do

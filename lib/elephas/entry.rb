@@ -41,20 +41,20 @@ module Elephas
     # Refreshes the entry.
     #
     # @param save [Boolean] If to save the refresh value in the cache.
+    # @param cache [Cache] The cache where to save the entry.
     # @return [Float] The new updated_at value.
-    def refresh(save = false)
+    def refresh(save = false, cache = nil)
       @updated_at = get_new_updated_at(@updated_at)
-      Elephas::Cache.provider.write(@hash, self) if save
+      cache.write(@hash, self) if save && cache
       @updated_at
     end
 
     # Checks if the entry is still valid.
     #
-    # @param provider [Provider::Base] The provider to use for the check.
+    # @param backend [Backends::Base] The backend to use for the check.
     # @return [Boolean] `true` if the entry is still valid, `false` otherwise.
-    def valid?(provider = nil)
-      provider ||= ::Elephas::Cache.provider
-      provider.now - self.updated_at < self.ttl / 1000
+    def valid?(backend)
+      backend.now - self.updated_at < self.ttl / 1000
     end
 
     # Compares to another Entry.

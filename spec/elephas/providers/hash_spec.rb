@@ -6,22 +6,22 @@
 
 require "spec_helper"
 
-describe Elephas::Providers::Hash do
-  subject { ::Elephas::Providers::Hash.new }
+describe Elephas::Backends::Hash do
+  subject { ::Elephas::Backends::Hash.new }
   let!(:value) { subject.write("KEY", ::Elephas::Entry.ensure("VALUE", "KEY", {ttl: 3600})) }
 
   describe "#initialize" do
     it "should create a store with an empty hash" do
-      expect(::Elephas::Providers::Hash.new.data).to eq({})
+      expect(::Elephas::Backends::Hash.new.data).to eq({})
     end
 
     it "should create a store with an given hash" do
-      expect(::Elephas::Providers::Hash.new({a: :b}).data).to eq({a: :b})
+      expect(::Elephas::Backends::Hash.new({a: :b}).data).to eq({a: :b})
     end
 
     it "should ensure that the store is an Hash" do
-      expect(::Elephas::Providers::Hash.new(nil).data).to eq({})
-      expect(::Elephas::Providers::Hash.new("INVALID").data).to eq({})
+      expect(::Elephas::Backends::Hash.new(nil).data).to eq({})
+      expect(::Elephas::Backends::Hash.new("INVALID").data).to eq({})
     end
   end
 

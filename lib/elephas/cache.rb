@@ -6,11 +6,21 @@
 
 module Elephas
   # This is the main class of the framework. Use only this class to access the cache.
+  #
+  # @attribute backend
+  #   @return [Backend] The backend used for the caching.
+  # @attribute prefix
+  #   @return [String] The default prefix for cache entries.
   class Cache
-    # @attribute provider
-    #   @return [Provider] The provider used for the caching.
-    class << self
-      attr_accessor :provider
+    attr_accessor :backend
+    attr_accessor :prefix
+
+    # Initialize the cache.
+    #
+    # @param backend [Backends::Base] The backend to use. By default uses an Hash backend.
+    def initialize(backend = nil)
+      @backend = backend || Elephas::Backends::Hash.new
+      @prefix = "elephas-#{::Elephas::Version::STRING}-cache"
     end
 
     # This is the main method of the framework.
@@ -20,14 +30,16 @@ module Elephas
     # If it doesn't find it, it uses the provided block (which receives options as argument) to compute its value and then store it into the cache for later usages.
     #
     # ```ruby
-    # value = Elephas::Cache.use("KEY") do |options|
+    # cache = Elephas::Cache.new(Elephas::Backends::Hash.new)
+    #
+    # value = cache.use("KEY") do |options|
     #   "VALUE"
     # end
     #
     # value
     # # => "VALUE"
     #
-    # value = Elephas::Cache.use("KEY") do |options|
+    # value = cache.use("KEY") do |options|
     #   "ANOTHER VALUE"
     # end
     #
@@ -40,14 +52,14 @@ module Elephas
     # @param block [Proc] An optional block to run to compute the value for the key if nothing is found.
     # @return [Object|Entry] The found or newly-set value associated to the key.
     # @see .setup_options
-    def self.use(key, options = {}, &block)
+    def use(key, options = {}, &block)
       rv = nil
 
       # Get options
-      options = ::Elephas::Cache.setup_options(options, key)
+      options = self.setup_options(options, key)
 
       # Check if the storage has the value (if we don't have to skip the cache)
-      rv = @provider.read(options[:hash]) if options[:force] == false && options[:ttl] > 0
+      rv = choose_backend(options).read(options[:hash]) if options[:force] == false && options[:ttl] > 0
       rv = compute_value(options, &block) if rv.nil? && block # Try to compute the value from the block
 
       # Return value
@@ -57,9 +69,10 @@ module Elephas
     # Reads a value from the cache.
     #
     # @param key [String] The key to lookup.
+    # @param backend [Backends::Base|NilClass] The backend to use. Defaults to the current backend.
     # @return [Object|NilClass] The read value or `nil`.
-    def self.read(key)
-      @provider.read(key)
+    def read(key, backend = nil)
+      choose_backend({backend: backend}).read(key)
     end
 
     # Writes a value to the cache.
@@ -69,31 +82,26 @@ module Elephas
     # @param options [Hash] A list of options for writing.
     # @see .setup_options
     # @return [Object] The value itself.
-    def self.write(key, value, options = {})
-      @provider.write(key, value, ::Elephas::Cache.setup_options(options, key))
+    def write(key, value, options = {})
+      choose_backend(options).write(key, value, self.setup_options(options, key))
     end
 
     # Deletes a value from the cache.
     #
     # @param key [String] The key to delete.
+    # @param backend [Backends::Base|NilClass] The backend to use. Defaults to the current backend.
     # @return [Boolean] `true` if the key was in the cache, `false` otherwise.
-    def self.delete(key)
-      @provider.delete(key)
+    def delete(key, backend = nil)
+      choose_backend({backend: backend}).delete(key)
     end
 
     # Checks if a key exists in the cache.
     #
     # @param key [String] The key to lookup.
+    # @param backend [Backends::Base|NilClass] The backend to use. Defaults to the current backend.
     # @return [Boolean] `true` if the key is in the cache, `false` otherwise.
-    def self.exists?(key)
-      @provider.exists?(key)
-    end
-
-    # Returns the default prefix for cache entries.
-    #
-    # @return [String] The default prefix for cache entries.
-    def self.default_prefix
-      "elephas-#{::Elephas::Version::STRING}-cache"
+    def exists?(key, backend = nil)
+      choose_backend({backend: backend}).exists?(key)
     end
 
     # Setups options for use into the framework.
@@ -110,7 +118,7 @@ module Elephas
     # @param options [Object] An initial setup.
     # @param key [String] The key to associate to this options.
     # @return [Hash] An options hash.
-    def self.setup_options(options, key)
+    def setup_options(options, key)
       options = {} if !options.is_a?(::Hash)
       options = {ttl: 1.hour * 1000, force: false, as_entry: false}.merge(options)
 
@@ -128,26 +136,36 @@ module Elephas
 
     private
       # Computes a new value and saves it to the cache.
+      #
       # @param options [Hash] A list of options for managing the value.
       # @param block [Proc] The block to run to compute the value.
       # @return [Object|Entry] The new value.
-      def self.compute_value(options, &block)
+      def compute_value(options, &block)
         rv = block.call(options)
         rv = ::Elephas::Entry.ensure(rv, options[:complete_key], options) # Make sure is an entry
-        Elephas::Cache.write(rv.hash, rv, options) if !rv.value.nil? && options[:ttl] > 0 # We have a value and we have to store it
+        self.write(rv.hash, rv, options) if !rv.value.nil? && options[:ttl] > 0 # We have a value and we have to store it
         rv
       end
 
       # Sanitizes options for safe usage.
+      #
       # @param options [Object] An initial setup.
       # @param key [String] The key to associate to this options.
       # @return [Hash] An options hash.
-      def self.sanitize_options(options, key)
+      def sanitize_options(options, key)
         options[:key] ||= key.ensure_string
         options[:ttl] == options[:ttl].blank? ? 1.hour * 1000 : [options[:ttl].to_integer, 0].max
         options[:force] = options[:force].to_boolean
-        options[:prefix] = options[:prefix].present? ? options[:prefix] : "elephas-#{::Elephas::Version::STRING}-cache"
+        options[:prefix] = options[:prefix].present? ? options[:prefix] : self.prefix
         options
+      end
+
+      # Choose a backend to use.
+      #
+      # @param options [Backends::Base|Hash] The backend to use. Defaults to the current backend.
+      def choose_backend(options)
+        backend = (options.is_a?(Hash) ? options.symbolize_keys[:backend] : options)
+        backend.is_a?(Elephas::Backends::Base) ? backend : self.backend
       end
   end
 end

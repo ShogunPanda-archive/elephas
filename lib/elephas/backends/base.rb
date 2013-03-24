@@ -6,11 +6,9 @@
 
 module Elephas
   # This module hosts all the storage system for the caches.
-  module Providers
-
-    # The base provider, with all methods a valid provider should override.
-    module Base
-      extend ActiveSupport::Concern
+  module Backends
+    # The a base backend. All data-related methods must be overriden.
+    class Base
       include Lazier::I18n
 
       # Reads a value from the cache.
@@ -58,7 +56,7 @@ module Elephas
       private
         # Marks a method as unimplemented.
         def unimplemented
-          self.i18n_setup(:elephas, ::File.absolute_path(::Pathname.new(::File.dirname(__FILE__)).to_s + "/../../locales/")) if !@i18n
+          self.i18n_setup(:elephas, ::File.absolute_path(::Pathname.new(::File.dirname(__FILE__)).to_s + "/../../../locales/")) if !@i18n
           raise ArgumentError.new(self.i18n.unimplemented)
         end
     end

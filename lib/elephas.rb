@@ -9,10 +9,8 @@ require "digest/sha2"
 Lazier.load!("boolean", "math", "object")
 
 require "elephas/version" if !defined?(Elephas::Version)
+require "elephas/backends/base"
+require "elephas/backends/hash"
+require "elephas/backends/ruby_on_rails"
 require "elephas/entry"
-require "elephas/provider"
-require "elephas/providers/hash"
-require "elephas/providers/ruby_on_rails"
 require "elephas/cache"
-
-Elephas::Cache.provider = defined?(Rails) ? Elephas::Providers::RubyOnRails.new : Elephas::Providers::Hash.new

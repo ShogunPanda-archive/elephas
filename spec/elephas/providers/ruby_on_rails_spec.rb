@@ -6,7 +6,7 @@
 
 require "spec_helper"
 
-describe Elephas::Providers::RubyOnRails do
+describe Elephas::Backends::RubyOnRails do
   class TempRailsCache < Hash # This class simulate the presence of Rails
     def read(key)
       self[key]
@@ -28,7 +28,7 @@ describe Elephas::Providers::RubyOnRails do
     end
   end
 
-  subject { ::Elephas::Providers::RubyOnRails.new }
+  subject { ::Elephas::Backends::RubyOnRails.new }
   let!(:value) { subject.write("KEY", ::Elephas::Entry.ensure("VALUE", "KEY", {ttl: 3600})) }
 
   describe "#read" do

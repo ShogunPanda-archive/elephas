@@ -6,4 +6,4 @@
 
 ---
   elephas:
-    unimplemented: "Una sottoclasse di Elephas::Providers deve effettuare l'override di questo metodo."
+    unimplemented: "Una sottoclasse di Elephas::Backends::Base deve effettuare l'override di questo metodo."
