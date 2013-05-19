@@ -12,7 +12,7 @@ describe Elephas::Backends::RubyOnRails do
       self[key]
     end
 
-    def write(key, value, options = {})
+    def write(key, value, _)
       delete(key)
       self[key] = value
     end
