@@ -56,7 +56,7 @@ module Elephas
       rv = nil
 
       # Get options
-      options = self.setup_options(options, key)
+      options = setup_options(options, key)
 
       # Check if the storage has the value (if we don't have to skip the cache)
       rv = choose_backend(options).read(options[:hash]) if options[:force] == false && options[:ttl] > 0
@@ -83,7 +83,7 @@ module Elephas
     # @see .setup_options
     # @return [Object] The value itself.
     def write(key, value, options = {})
-      choose_backend(options).write(key, value, self.setup_options(options, key))
+      choose_backend(options).write(key, value, setup_options(options, key))
     end
 
     # Deletes a value from the cache.
@@ -119,8 +119,7 @@ module Elephas
     # @param key [String] The key to associate to this options.
     # @return [Hash] An options hash.
     def setup_options(options, key)
-      options = {} if !options.is_a?(::Hash)
-      options = {ttl: 1.hour * 1000, force: false, as_entry: false}.merge(options)
+      options = {ttl: 1.hour * 1000, force: false, as_entry: false}.merge(options.ensure_hash({}))
 
       # Sanitize options.
       options = sanitize_options(options, key)
@@ -143,7 +142,7 @@ module Elephas
       def compute_value(options, &block)
         rv = block.call(options)
         rv = ::Elephas::Entry.ensure(rv, options[:complete_key], options) # Make sure is an entry
-        self.write(rv.hash, rv, options) if !rv.value.nil? && options[:ttl] > 0 # We have a value and we have to store it
+        write(rv.hash, rv, options) if !rv.value.nil? && options[:ttl] > 0 # We have a value and we have to store it
         rv
       end
 
@@ -153,10 +152,11 @@ module Elephas
       # @param key [String] The key to associate to this options.
       # @return [Hash] An options hash.
       def sanitize_options(options, key)
-        options[:key] ||= key.ensure_string
+        options[:key] ||= key
         options[:ttl] == options[:ttl].blank? ? 1.hour * 1000 : [options[:ttl].to_integer, 0].max
         options[:force] = options[:force].to_boolean
         options[:prefix] = options[:prefix].present? ? options[:prefix] : self.prefix
+
         options
       end
 
@@ -164,7 +164,7 @@ module Elephas
       #
       # @param options [Backends::Base|Hash] The backend to use. Defaults to the current backend.
       def choose_backend(options)
-        backend = (options.is_a?(Hash) ? options.symbolize_keys[:backend] : options)
+        backend = options.ensure_hash({}).symbolize_keys[:backend]
         backend.is_a?(Elephas::Backends::Base) ? backend : self.backend
       end
   end

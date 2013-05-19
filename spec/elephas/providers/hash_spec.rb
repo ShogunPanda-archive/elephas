@@ -16,7 +16,7 @@ describe Elephas::Backends::Hash do
     end
 
     it "should create a store with an given hash" do
-      expect(::Elephas::Backends::Hash.new({a: :b}).data).to eq({a: :b})
+      expect(::Elephas::Backends::Hash.new({a: :b}).data).to eq({"a" => :b})
     end
 
     it "should ensure that the store is an Hash" do

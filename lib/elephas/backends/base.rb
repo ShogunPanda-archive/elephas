@@ -56,8 +56,8 @@ module Elephas
       private
         # Marks a method as unimplemented.
         def unimplemented
-          self.i18n_setup(:elephas, ::File.absolute_path(::Pathname.new(::File.dirname(__FILE__)).to_s + "/../../../locales/")) if !@i18n
-          raise ArgumentError.new(self.i18n.unimplemented)
+          i18n_setup(:elephas, ::File.absolute_path(::Pathname.new(::File.dirname(__FILE__)).to_s + "/../../../locales/")) if !@i18n
+          raise ArgumentError.new(i18n.unimplemented)
         end
     end
   end

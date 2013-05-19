@@ -35,7 +35,7 @@ module Elephas
       @hash = hash.present? ? hash : self.class.hashify_key(key)
       @value = value
       @ttl = ttl
-      self.refresh
+      refresh
     end
 
     # Refreshes the entry.
@@ -54,7 +54,7 @@ module Elephas
     # @param backend [Backends::Base] The backend to use for the check.
     # @return [Boolean] `true` if the entry is still valid, `false` otherwise.
     def valid?(backend)
-      backend.now - self.updated_at < self.ttl / 1000
+      backend.now - updated_at < self.ttl / 1000
     end
 
     # Compares to another Entry.
@@ -70,7 +70,7 @@ module Elephas
     # @param key [String] The key to hashify.
     # @return [String] An unique hash for the key.
     def self.hashify_key(key)
-      Digest::SHA2.hexdigest(key.ensure_string)
+      Digest::SHA2.hexdigest(key)
     end
 
     # Ensures that the value is an Entry.
@@ -83,10 +83,10 @@ module Elephas
       rv = value
 
       if !rv.is_a?(::Elephas::Entry) then
-        options = {} if !options.is_a?(Hash)
+        options = options.ensure_hash({})
 
         ttl = [options[:ttl].to_integer, 0].max
-        hash = options[:hash] || ::Elephas::Entry.hashify_key(key.ensure_string)
+        hash = options[:hash] || ::Elephas::Entry.hashify_key(key)
 
         rv = ::Elephas::Entry.new(key, rv, hash, ttl)
       end

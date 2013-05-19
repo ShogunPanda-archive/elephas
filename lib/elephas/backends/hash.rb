@@ -9,7 +9,7 @@ module Elephas
     # This is a simple backend, which uses an hash for storing the values.
     #
     # @attribute data
-    #   @return [Hash] The internal hash used by the backend.
+    #   @return [HashWithIndifferentAccess] The internal hash used by the backend.
     class Hash < Base
       attr_accessor :data
 
@@ -17,7 +17,7 @@ module Elephas
       #
       # @param data [Hash] The initial data stored.
       def initialize(data = nil)
-        @data = data && data.is_a?(::Hash) ? data : {}
+        @data = data.ensure_hash({}).with_indifferent_access
       end
 
       # Reads a value from the cache.
@@ -25,7 +25,7 @@ module Elephas
       # @param key [String] The key to lookup.
       # @return [Entry|NilClass] The read value or `nil`.
       def read(key)
-        self.exists?(key) ? @data[key.ensure_string] : nil
+        exists?(key) ? @data[key] : nil
       end
 
       # Writes a value to the cache.
@@ -38,7 +38,7 @@ module Elephas
       def write(key, value, options = {})
         entry = ::Elephas::Entry.ensure(value, key, options)
         entry.refresh
-        @data[key.ensure_string] = entry
+        @data[key] = entry
         entry
       end
 
@@ -47,7 +47,6 @@ module Elephas
       # @param key [String] The key to delete.
       # @return [Boolean] `true` if the key was in the cache, `false` otherwise.
       def delete(key)
-        key = key.ensure_string
         rv = @data.has_key?(key)
         @data.delete(key)
         rv
@@ -58,7 +57,6 @@ module Elephas
       # @param key [String] The key to lookup.
       # @return [Boolean] `true` if the key is in the cache, `false` otherwise.
       def exists?(key)
-        key = key.ensure_string
         @data.has_key?(key) && @data[key].valid?(self)
       end
     end

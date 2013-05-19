@@ -13,7 +13,7 @@ module Elephas
       # @param key [String] The key to lookup.
       # @return [Entry|NilClass] The read value or `nil`.
       def read(key)
-        self.exists?(key) ? Rails.cache.read(key) : nil
+        exists?(key) ? Rails.cache.read(key) : nil
       end
 
       # Writes a value to the cache.
@@ -35,7 +35,6 @@ module Elephas
       # @param key [String] The key to delete.
       # @return [Boolean] `true` if the key was in the cache, `false` otherwise.
       def delete(key)
-        key = key.ensure_string
         rv = Rails.cache.exist?(key)
         Rails.cache.delete(key)
         rv
@@ -46,7 +45,6 @@ module Elephas
       # @param key [String] The key to lookup.
       # @return [Boolean] `true` if the key is in the cache, `false` otherwise.
       def exists?(key)
-        key = key.ensure_string
         Rails.cache.exist?(key) && Rails.cache.read(key).valid?(self)
       end
     end

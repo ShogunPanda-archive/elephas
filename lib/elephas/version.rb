@@ -11,13 +11,13 @@ module Elephas
   # @see http://semver.org
   module Version
     # The major version.
-    MAJOR = 3
+    MAJOR = 4
 
     # The minor version.
     MINOR = 0
 
     # The patch version.
-    PATCH = 1
+    PATCH = 0
 
     # The current version of elephas.
     STRING = [MAJOR, MINOR, PATCH].compact.join(".")

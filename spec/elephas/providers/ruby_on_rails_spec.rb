@@ -13,12 +13,12 @@ describe Elephas::Backends::RubyOnRails do
     end
 
     def write(key, value, options = {})
-      self.delete(key)
+      delete(key)
       self[key] = value
     end
 
     def exist?(key)
-      self.has_key?(key)
+      has_key?(key)
     end
   end
 

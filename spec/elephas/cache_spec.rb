@@ -6,7 +6,7 @@
 
 require "spec_helper"
 
-describe ::Elephas::Cache do
+describe Elephas::Cache do
   let(:entry) { ::Elephas::Entry.ensure("VALUE", ::Elephas::Cache.new(nil).prefix + "[KEY]", {ttl: 3600}) }
   let(:reference) { ::Elephas::Cache.new(::Elephas::Backends::Hash.new) }
 

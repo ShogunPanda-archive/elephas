@@ -84,7 +84,6 @@ describe Elephas::Entry do
     it "should compute a good hash" do
       expect(::Elephas::Entry.hashify_key("HASH 1")).to eq("88e1f3572122e2605c1fab09efa8d4e99f5a064ae0230ca0aeced839796aba35")
       expect(::Elephas::Entry.hashify_key("HASH 2")).to eq("38589cee32e00f700cf958dfe98f17d6da231700c41586e3c32b00314bb3cb58")
-      expect(::Elephas::Entry.hashify_key(nil)).to eq("e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855")
     end
   end
 
