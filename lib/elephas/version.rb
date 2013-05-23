@@ -14,7 +14,7 @@ module Elephas
     MAJOR = 4
 
     # The minor version.
-    MINOR = 0
+    MINOR = 1
 
     # The patch version.
     PATCH = 0

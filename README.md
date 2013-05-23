@@ -4,6 +4,7 @@
 [![Dependency Status](https://gemnasium.com/ShogunPanda/elephas.png?travis)](https://gemnasium.com/ShogunPanda/elephas)
 [![Build Status](https://secure.travis-ci.org/ShogunPanda/elephas.png?branch=master)](http://travis-ci.org/ShogunPanda/elephas)
 [![Code Climate](https://codeclimate.com/github/ShogunPanda/elephas.png)](https://codeclimate.com/github/ShogunPanda/elephas)
+[![Coverage Status](https://coveralls.io/repos/ShogunPanda/elephas/badge.png)](https://coveralls.io/r/ShogunPanda/elephas)
 
 A storage agnostic caching framework.
 
