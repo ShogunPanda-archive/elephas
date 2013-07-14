@@ -17,7 +17,7 @@ module Elephas
     MINOR = 1
 
     # The patch version.
-    PATCH = 3
+    PATCH = 4
 
     # The current version of elephas.
     STRING = [MAJOR, MINOR, PATCH].compact.join(".")
