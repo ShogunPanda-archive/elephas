@@ -6,7 +6,7 @@
 <title>
   Class: Elephas::Entry
   
-    &mdash; Documentation by YARD 0.8.6.1
+    &mdash; Documentation by YARD 0.8.6.2
   
 </title>
 
@@ -708,7 +708,7 @@
 </span>  <span class='comment'># @param backend [Backends::Base] The backend to use for the check.
 </span>  <span class='comment'># @return [Boolean] `true` if the entry is still valid, `false` otherwise.
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_valid?'>valid?</span><span class='lparen'>(</span><span class='id identifier rubyid_backend'>backend</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_backend'>backend</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>-</span> <span class='id identifier rubyid_updated_at'>updated_at</span> <span class='op'>&lt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_ttl'>ttl</span> <span class='op'>/</span> <span class='int'>1000</span>
+    <span class='id identifier rubyid_backend'>backend</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>-</span> <span class='id identifier rubyid_updated_at'>updated_at</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_ttl'>ttl</span> <span class='op'>/</span> <span class='int'>1000</span>
   <span class='kw'>end</span>
 
   <span class='comment'># Compares to another Entry.
@@ -937,7 +937,7 @@
 </span>  <span class='comment'># @param backend [Backends::Base] The backend to use for the check.
 </span>  <span class='comment'># @return [Boolean] `true` if the entry is still valid, `false` otherwise.
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_valid?'>valid?</span><span class='lparen'>(</span><span class='id identifier rubyid_backend'>backend</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_backend'>backend</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>-</span> <span class='id identifier rubyid_updated_at'>updated_at</span> <span class='op'>&lt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_ttl'>ttl</span> <span class='op'>/</span> <span class='int'>1000</span>
+    <span class='id identifier rubyid_backend'>backend</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>-</span> <span class='id identifier rubyid_updated_at'>updated_at</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_ttl'>ttl</span> <span class='op'>/</span> <span class='int'>1000</span>
   <span class='kw'>end</span>
 
   <span class='comment'># Compares to another Entry.
@@ -1166,7 +1166,7 @@
 </span>  <span class='comment'># @param backend [Backends::Base] The backend to use for the check.
 </span>  <span class='comment'># @return [Boolean] `true` if the entry is still valid, `false` otherwise.
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_valid?'>valid?</span><span class='lparen'>(</span><span class='id identifier rubyid_backend'>backend</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_backend'>backend</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>-</span> <span class='id identifier rubyid_updated_at'>updated_at</span> <span class='op'>&lt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_ttl'>ttl</span> <span class='op'>/</span> <span class='int'>1000</span>
+    <span class='id identifier rubyid_backend'>backend</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>-</span> <span class='id identifier rubyid_updated_at'>updated_at</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_ttl'>ttl</span> <span class='op'>/</span> <span class='int'>1000</span>
   <span class='kw'>end</span>
 
   <span class='comment'># Compares to another Entry.
@@ -1395,7 +1395,7 @@
 </span>  <span class='comment'># @param backend [Backends::Base] The backend to use for the check.
 </span>  <span class='comment'># @return [Boolean] `true` if the entry is still valid, `false` otherwise.
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_valid?'>valid?</span><span class='lparen'>(</span><span class='id identifier rubyid_backend'>backend</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_backend'>backend</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>-</span> <span class='id identifier rubyid_updated_at'>updated_at</span> <span class='op'>&lt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_ttl'>ttl</span> <span class='op'>/</span> <span class='int'>1000</span>
+    <span class='id identifier rubyid_backend'>backend</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>-</span> <span class='id identifier rubyid_updated_at'>updated_at</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_ttl'>ttl</span> <span class='op'>/</span> <span class='int'>1000</span>
   <span class='kw'>end</span>
 
   <span class='comment'># Compares to another Entry.
@@ -1624,7 +1624,7 @@
 </span>  <span class='comment'># @param backend [Backends::Base] The backend to use for the check.
 </span>  <span class='comment'># @return [Boolean] `true` if the entry is still valid, `false` otherwise.
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_valid?'>valid?</span><span class='lparen'>(</span><span class='id identifier rubyid_backend'>backend</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_backend'>backend</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>-</span> <span class='id identifier rubyid_updated_at'>updated_at</span> <span class='op'>&lt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_ttl'>ttl</span> <span class='op'>/</span> <span class='int'>1000</span>
+    <span class='id identifier rubyid_backend'>backend</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>-</span> <span class='id identifier rubyid_updated_at'>updated_at</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_ttl'>ttl</span> <span class='op'>/</span> <span class='int'>1000</span>
   <span class='kw'>end</span>
 
   <span class='comment'># Compares to another Entry.
@@ -2143,7 +2143,7 @@
       <pre class="code"><span class="info file"># File 'lib/elephas/entry.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_valid?'>valid?</span><span class='lparen'>(</span><span class='id identifier rubyid_backend'>backend</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_backend'>backend</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>-</span> <span class='id identifier rubyid_updated_at'>updated_at</span> <span class='op'>&lt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_ttl'>ttl</span> <span class='op'>/</span> <span class='int'>1000</span>
+  <span class='id identifier rubyid_backend'>backend</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>-</span> <span class='id identifier rubyid_updated_at'>updated_at</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_ttl'>ttl</span> <span class='op'>/</span> <span class='int'>1000</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2155,9 +2155,9 @@
 </div>
 
     <div id="footer">
-  Generated on Thu May 23 11:05:50 2013 by
+  Generated on Sun Jul 14 13:40:57 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.6.1 (ruby-1.9.3).
+  0.8.6.2 (ruby-1.9.3).
 </div>
 
   </body>

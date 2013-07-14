@@ -6,7 +6,7 @@
 <title>
   Class: Elephas::Cache
   
-    &mdash; Documentation by YARD 0.8.6.1
+    &mdash; Documentation by YARD 0.8.6.2
   
 </title>
 
@@ -767,7 +767,7 @@
       <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:key</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='id identifier rubyid_key'>key</span>
       <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:ttl</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:ttl</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span> <span class='op'>?</span> <span class='int'>1</span><span class='period'>.</span><span class='id identifier rubyid_hour'>hour</span> <span class='op'>*</span> <span class='int'>1000</span> <span class='op'>:</span> <span class='lbracket'>[</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:ttl</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_integer'>to_integer</span><span class='comma'>,</span> <span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_max'>max</span>
       <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:force</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:force</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_boolean'>to_boolean</span>
-      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:prefix</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:prefix</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_present?'>present?</span> <span class='op'>?</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:prefix</span><span class='rbracket'>]</span> <span class='op'>:</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_prefix'>prefix</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:prefix</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:prefix</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_present?'>present?</span> <span class='op'>?</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:prefix</span><span class='rbracket'>]</span> <span class='op'>:</span> <span class='id identifier rubyid_prefix'>prefix</span>
 
       <span class='id identifier rubyid_options'>options</span>
     <span class='kw'>end</span>
@@ -1134,7 +1134,7 @@
       <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:key</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='id identifier rubyid_key'>key</span>
       <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:ttl</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:ttl</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span> <span class='op'>?</span> <span class='int'>1</span><span class='period'>.</span><span class='id identifier rubyid_hour'>hour</span> <span class='op'>*</span> <span class='int'>1000</span> <span class='op'>:</span> <span class='lbracket'>[</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:ttl</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_integer'>to_integer</span><span class='comma'>,</span> <span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_max'>max</span>
       <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:force</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:force</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_boolean'>to_boolean</span>
-      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:prefix</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:prefix</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_present?'>present?</span> <span class='op'>?</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:prefix</span><span class='rbracket'>]</span> <span class='op'>:</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_prefix'>prefix</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:prefix</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:prefix</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_present?'>present?</span> <span class='op'>?</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:prefix</span><span class='rbracket'>]</span> <span class='op'>:</span> <span class='id identifier rubyid_prefix'>prefix</span>
 
       <span class='id identifier rubyid_options'>options</span>
     <span class='kw'>end</span>
@@ -1839,9 +1839,9 @@ end</p>
 </div>
 
     <div id="footer">
-  Generated on Thu May 23 11:05:50 2013 by
+  Generated on Sun Jul 14 13:40:57 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.6.1 (ruby-1.9.3).
+  0.8.6.2 (ruby-1.9.3).
 </div>
 
   </body>

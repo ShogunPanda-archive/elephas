@@ -155,7 +155,7 @@ module Elephas
         options[:key] ||= key
         options[:ttl] == options[:ttl].blank? ? 1.hour * 1000 : [options[:ttl].to_integer, 0].max
         options[:force] = options[:force].to_boolean
-        options[:prefix] = options[:prefix].present? ? options[:prefix] : self.prefix
+        options[:prefix] = options[:prefix].present? ? options[:prefix] : prefix
 
         options
       end

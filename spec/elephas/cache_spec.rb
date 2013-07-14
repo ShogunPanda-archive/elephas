@@ -29,7 +29,7 @@ describe Elephas::Cache do
 
     it "should not use the block if the value is valid" do
       reference.use("KEY") do entry end
-      expect{ reference.use("KEY") do raise ArgumentError end }.not_to raise_error(ArgumentError)
+      expect{ reference.use("KEY") do raise ArgumentError end }.not_to raise_error
     end
 
     it "should store the value in the cache" do

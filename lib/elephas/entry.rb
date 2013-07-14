@@ -54,7 +54,7 @@ module Elephas
     # @param backend [Backends::Base] The backend to use for the check.
     # @return [Boolean] `true` if the entry is still valid, `false` otherwise.
     def valid?(backend)
-      backend.now - updated_at < self.ttl / 1000
+      backend.now - updated_at < ttl / 1000
     end
 
     # Compares to another Entry.
