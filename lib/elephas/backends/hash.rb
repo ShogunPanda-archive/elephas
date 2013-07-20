@@ -17,7 +17,7 @@ module Elephas
       #
       # @param data [Hash] The initial data stored.
       def initialize(data = nil)
-        @data = data.ensure_hash({}).with_indifferent_access
+        @data = data.ensure_hash(:indifferent)
       end
 
       # Reads a value from the cache.

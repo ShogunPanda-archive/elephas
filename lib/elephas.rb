@@ -6,7 +6,7 @@
 
 require "lazier"
 require "digest/sha2"
-Lazier.load!("boolean", "math", "object")
+Lazier.load!(:object, :boolean, :math, :hash)
 
 require "elephas/version" if !defined?(Elephas::Version)
 require "elephas/backends/base"

@@ -83,7 +83,7 @@ module Elephas
       rv = value
 
       if !rv.is_a?(::Elephas::Entry) then
-        options = options.ensure_hash({})
+        options = options.ensure_hash
 
         ttl = [options[:ttl].to_integer, 0].max
         hash = options[:hash] || ::Elephas::Entry.hashify_key(key)

@@ -119,7 +119,7 @@ module Elephas
     # @param key [String] The key to associate to this options.
     # @return [Hash] An options hash.
     def setup_options(options, key)
-      options = {ttl: 1.hour * 1000, force: false, as_entry: false}.merge(options.ensure_hash({}))
+      options = {ttl: 1.hour * 1000, force: false, as_entry: false}.merge(options.ensure_hash)
 
       # Sanitize options.
       options = sanitize_options(options, key)
@@ -164,7 +164,7 @@ module Elephas
       #
       # @param options [Backends::Base|Hash] The backend to use. Defaults to the current backend.
       def choose_backend(options)
-        backend = options.ensure_hash({}).symbolize_keys[:backend]
+        backend = options.ensure_hash(:symbols)[:backend]
         backend.is_a?(Elephas::Backends::Base) ? backend : self.backend
       end
   end
