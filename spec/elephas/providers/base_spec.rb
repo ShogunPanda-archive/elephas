@@ -35,8 +35,8 @@ describe Elephas::Backends::Base do
 
   describe "#now" do
     it "return a representation for the current time" do
-      Time.stub(:now).and_return(123.456)
-      expect(provider.now).to eq(Time.now.to_f)
+      allow(::Time).to receive(:now).and_return(123.456)
+      expect(provider.now).to eq(::Time.now.to_f)
     end
   end
 end

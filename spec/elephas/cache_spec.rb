@@ -12,15 +12,15 @@ describe Elephas::Cache do
 
   describe ".use" do
     it "should use the provider for reading the value" do
-      reference.backend.should_receive(:read)
+      expect(reference.backend).to receive(:read)
       reference.use("KEY") do "VALUE" end
     end
 
     it "should skip the provider if requested to" do
       reference.use("KEY", {ttl: 0}) do "VALUE" end
-      reference.backend.should_not_receive(:read)
+      expect(reference.backend).not_to receive(:read)
       reference.use("KEY", {force: true}) do "VALUE" end
-      reference.backend.should_not_receive(:read)
+      expect(reference.backend).not_to receive(:read)
     end
 
     it "should use the block for value computation" do
@@ -49,28 +49,28 @@ describe Elephas::Cache do
 
   describe ".read" do
     it "should be forwarded to the provider" do
-      reference.backend.should_receive(:read)
+      expect(reference.backend).to receive(:read)
       reference.read("KEY")
     end
   end
 
   describe ".write" do
     it "should be forwarded to the provider" do
-      reference.backend.should_receive(:write)
+      expect(reference.backend).to receive(:write)
       reference.write("KEY", "VALUE")
     end
   end
 
   describe ".delete" do
     it "should be forwarded to the provider" do
-      reference.backend.should_receive(:delete)
+      expect(reference.backend).to receive(:delete)
       reference.delete("KEY")
     end
   end
 
   describe ".exists?" do
     it "should be forwarded to the provider" do
-      reference.backend.should_receive(:exists?)
+      expect(reference.backend).to receive(:exists?)
       reference.exists?("KEY")
     end
   end

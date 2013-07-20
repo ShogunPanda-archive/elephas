@@ -12,14 +12,14 @@ describe Elephas::Entry do
 
   describe "#initialize" do
     it "should initialize with good defaults" do
-      ::Time.stub(:now).and_return(123.456)
+      allow(::Time).to receive(:now).and_return(123.456)
       expect(subject.key).to eq("KEY")
       expect(subject.value).to eq("VALUE")
       expect(subject.hash).to eq("5ca24005b740717ba4f3f6bc48a230700e68c2a4b11ecedb96f169f4efaf1f21")
       expect(subject.ttl).to eq(360000)
       expect(subject.updated_at).to eq(123.456)
 
-      ::Time.stub(:now).and_return(123.789)
+      allow(::Time).to receive(:now).and_return(123.789)
       other = ::Elephas::Entry.new("KEY 1", "VALUE 1", "HASH", 7200)
       expect(other.key).to eq("KEY 1")
       expect(other.value).to eq("VALUE 1")
@@ -31,12 +31,12 @@ describe Elephas::Entry do
 
   describe "#refresh" do
     before(:each) do
-      ::Time.stub(:now).and_return(123.123)
+      allow(::Time).to receive(:now).and_return(123.123)
     end
 
     it "should update the updated_at field" do
       expect(subject.updated_at).to eq(123.123)
-      ::Time.stub(:now).and_return(456.456)
+      allow(::Time).to receive(:now).and_return(456.456)
       subject.refresh
       expect(subject.updated_at).to eq(456.456)
     end
@@ -50,16 +50,16 @@ describe Elephas::Entry do
 
   describe "#valid?" do
     before(:each) do
-      ::Time.stub(:now).and_return(100)
+      allow(::Time).to receive(:now).and_return(100)
     end
 
     it "should return true if the ttl is still valid" do
-      ::Time.stub(:now).and_return(1000)
+      allow(::Time).to receive(:now).and_return(1000)
       expect(subject.valid?(backend)).to be_true
     end
 
     it "should return true if the ttl has expired" do
-      ::Time.stub(:now).and_return(10000)
+      allow(::Time).to receive(:now).and_return(10000)
       subject.updated_at = 1000
       expect(subject.valid?(backend)).to be_false
     end
