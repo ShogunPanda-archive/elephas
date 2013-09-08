@@ -7,8 +7,6 @@
 
 A storage agnostic caching framework.
 
-http://sw.cow.tc/elephas
-
 http://rdoc.info/gems/elephas
 
 ## END OF DEVELOPMENT NOTICE
